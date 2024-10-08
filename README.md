@@ -90,4 +90,4 @@ Las contribuciones son bienvenidas. Si deseas contribuir, por favor, haz un fork
 
 Este proyecto está licenciado bajo la MIT License. Para más detalles, consulta el archivo LICENSE.
 
-Hecho con :heart: por Elena Ruiz De La Blanca
+Hecho con :heart: por Carla Rumeu Montesinos
