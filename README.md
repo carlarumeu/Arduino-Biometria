@@ -1,98 +1,93 @@
-<div align="center" id="top"> &#xa0; </div> <h1 align="center">PROYECTO BIOMETRÍA Y MEDIOAMBIENTE</h1> <h2 align="center">Contenedores Docker, Base de Datos y API</h2> <p align="center"> <a href="#dart-about">Acerca del proyecto</a> &#xa0; | &#xa0; <a href="#rocket-technologies">Tecnologías</a> &#xa0; | &#xa0; <a href="#white_check_mark-requirements">Requisitos</a> &#xa0; | &#xa0; <a href="#checkered_flag-starting">Comenzando</a> &#xa0; | &#xa0; <a href="#computer-database-queries">Consultas</a> &#xa0; | &#xa0; <a href="#memo-license">Licencia</a> &#xa0; | &#xa0; <a href="https://github.com/eleecash" target="_blank">Autor</a> </p> <br>
+# Proyecto Arduino: Medidor de Gas y Temperatura
 
-</div> 
-</div><h2>:dart: Acerca del proyecto</h2>
-Este proyecto define una API REST para obtener y almacenar mediciones de sensores de gases. Utiliza una arquitectura Docker con contenedores para la aplicación Node.js y una base de datos MySQL, permitiendo un entorno fácilmente replicable y escalable.
+Este proyecto implementa un sistema para medir la concentración de ozono (O3) y temperatura utilizando un Arduino. Utiliza varias clases para organizar la lógica, incluyendo la lectura de sensores, la publicación de datos mediante Bluetooth Low Energy (BLE), y la gestión de LEDs.
 
-</div><h2>:rocket: Tecnologías</h2>
-Las siguientes herramientas fueron utilizadas en este proyecto:
+## Tabla de Contenidos
 
-- Docker
-- Node.js
-- MySQL
-- Express
-- MySQL2 (Node Package)
+- [Requisitos](#requisitos)
+- [Configuración del Proyecto](#configuración-del-proyecto)
+- [Clases](#clases)
+  - [LED](#led)
+  - [Medidor](#medidor)
+  - [Publicador](#publicador)
+  - [PuertoSerie](#puerto-serie)
+  - [ServicioEnEmisora](#servicio-en-emisora)
+- [Uso](#uso)
+- [Contribuciones](#contribuciones)
 
-</div><h2>:white_check_mark: Requisitos</h2>
-Antes de comenzar, asegúrate de tener Git, Node.js y Docker instalados en tu máquina.
+## Requisitos
 
-Asegúrate de definir las siguientes variables de entorno en un archivo .env en el directorio raíz del proyecto:
+- *Hardware*:
+  - Arduino (cualquier modelo compatible)
+  - Sensor de ozono
+  - Sensor de temperatura (opcional)
+  - Módulo BLE
+  - LED (opcional)
 
-MYSQLDB_HOST=mysqldb
-MYSQLDB_USER=root
-MYSQLDB_ROOT_PASSWORD=elena
-MYSQLDB_DATABASE=proyectobiodb
-MYSQLDB_LOCAL_PORT=3306
-MYSQLDB_DOCKER_PORT=3306
+- *Software*:
+  - Arduino IDE
+  - Biblioteca BLE (dependiendo del módulo utilizado)
 
-NODE_LOCAL_PORT=3000
-NODE_DOCKER_PORT=3000
+## Configuración del Proyecto
 
-</div><h2>:checkered_flag: Comenzando</h2>
-Pasos para clonar y levantar los contenedores Docker:
-Clonar el proyecto desde GitHub:
+1. *Conectar los Sensores*: Asegúrate de conectar el sensor de ozono y el sensor de temperatura a los pines adecuados en tu Arduino.
+2. *Configurar el Módulo BLE*: Conecta el módulo BLE y verifica que esté correctamente configurado para comunicarse con el Arduino.
+3. *Instalar Bibliotecas*: Asegúrate de instalar todas las bibliotecas necesarias para el BLE y cualquier otra que pueda ser requerida por los sensores.
 
-1. Clonar el proyecto desde GitHub:
- https://github.com/eleecash/proyectbio.git
+## Clases
 
-2. Accede al directorio del proyecto:
-cd proyectbio
+### LED
+Esta clase gestiona el control de un LED conectado al Arduino. Incluye métodos para encender, apagar, alternar su estado y hacer que brille durante un tiempo específico.
 
-3. Crea el archivo .env con las variables de entorno necesarias:
-touch .env
+#### Métodos:
+- encender(): Enciende el LED.
+- apagar(): Apaga el LED.
+- alternar(): Cambia el estado del LED.
+- brillar(long tiempo): Enciende el LED por un tiempo determinado.
 
-4. Construir y levantar los contenedores utilizando Docker Compose:
-docker-compose up --build
+### Medidor
+Esta clase se encarga de leer los valores de los sensores de gas y temperatura.
 
-5. Accede a la aplicación:
-- La API estará disponible en http://localhost:3000.
-- La base de datos MySQL estará escuchando en el puerto 3306.
+#### Métodos:
+- iniciarMedidor(): Configura los pines para los sensores.
+- medirGas(): Lee la concentración de ozono y devuelve el valor calibrado en ppm.
+- medirTemperatura(): Devuelve una temperatura de ejemplo (a modificar según el sensor utilizado).
 
-Estructura del Proyecto:
-- Dockerfile: Define la imagen de Node.js para la aplicación y el entorno de trabajo.
-- docker-compose.yml: Configura los servicios de Docker para la base de datos MySQL y la aplicación Node.js.
-- db.js: Configuración de la conexión a la base de datos.
-- medicionesController.js: Controladores para manejar las rutas de la API.
-- medicionesService.js: Servicios que interactúan con la base de datos.
-- index.js: Punto de entrada principal del servidor Express.
-- database-init.sql: Script SQL para inicializar la base de datos.
-- ejemplosdatos.sql: Datos de ejemplo para pruebas iniciales.
+### Publicador
+Esta clase se encarga de publicar los datos de las mediciones a través del módulo BLE.
 
-</div><h2>:computer: Consultas a la Base de Datos</h2>
+#### Métodos:
+- encenderEmisora(): Activa la emisora BLE.
+- publicarCO2(double valorCO2, uint8_t contador, long tiempoEspera): Publica los datos de CO2.
+- publicarTemperatura(int16_t valorTemperatura, uint8_t contador, long tiempoEspera): Publica los datos de temperatura.
 
-- Obtener todas las mediciones:
-GET /mediciones
+### PuertoSerie
+Esta clase permite la comunicación a través del puerto serie.
 
-Parámetros opcionales:
+#### Métodos:
+- esperarDisponible(): Espera a que el puerto serie esté disponible.
+- escribir(T mensaje): Envía un mensaje a través del puerto serie.
 
-- lugar: Filtra por lugar.
-- tipo_gas: Filtra por tipo de gas.
-- desde_hora: Filtra desde una hora específica.
-- hasta_hora: Filtra hasta una hora específica.
+### ServicioEnEmisora
+Esta clase gestiona el servicio BLE y las características relacionadas.
 
-- Enviar una nueva medición 
-POST /mediciones
+#### Métodos:
+- activarServicio(): Activa el servicio BLE y sus características.
+- anyadirCaracteristica(Caracteristica& car): Añade una característica al servicio.
 
-Cuerpo de la solicitud (JSON):
+## Uso
 
-{
-  "medida": 50.5,
-  "lugar": "Zona Industrial",
-  "tipo_gas": "CO2",
-  "hora": "2024-09-26T14:30:00"
-}
+1. Carga el código en tu Arduino utilizando el Arduino IDE.
+2. Abre el puerto serie para ver las mediciones en tiempo real.
+3. Asegúrate de que el módulo BLE esté encendido y funcionando.
+4. Observa las lecturas de ozono y temperatura en el monitor serie.
 
-- Obtener la última medición registrada:
-GET /mediciones/ultima
+## Contribuciones
 
-- Inicializar la base de datos manualmente:
-Si necesitas inicializar o reinicializar la base de datos, puedes usar los archivos SQL proporcionados en la carpeta src/mysql-init/:
+Las contribuciones son bienvenidas. Si deseas contribuir, por favor, haz un fork del repositorio y envía un pull request.
 
-database-init.sql: Crea las tablas necesarias.
-ejemplosdatos.sql: Inserta datos de ejemplo en la tabla mediciones.
+## Licencia
 
-</div><h2>:memo: License</h2>
-
-Este proyecto está bajo la licencia MIT.
+Este proyecto está licenciado bajo la MIT License. Para más detalles, consulta el archivo LICENSE.
 
 Hecho con :heart: por Elena Ruiz De La Blanca
