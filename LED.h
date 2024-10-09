@@ -18,6 +18,8 @@
  * 
  * @param tiempo Tiempo en milisegundos para esperar.
  */
+
+ // Z -> esperar()
 void esperar (long tiempo) {
   delay (tiempo);
 }
@@ -39,6 +41,8 @@ public:
    * 
    * @param numero El número del pin al que está conectado el LED.
    */
+
+   // Z -> LED()
   LED(int numero) : numeroLED(numero), encendido(false) {
     pinMode(numeroLED, OUTPUT); ///< Configura el pin como salida.
     apagar(); ///< Apaga el LED al inicializar.
@@ -47,6 +51,8 @@ public:
   /** 
    * Enciende el LED.
    */
+
+   // encender()
   void encender () {
   digitalWrite(numeroLED, HIGH); 
   encendido = true;
@@ -55,6 +61,8 @@ public:
   /** 
    * Apaga el LED.
    */
+
+   // apagar()
   void apagar () {
     digitalWrite(numeroLED, LOW);
     encendido = false;
@@ -63,6 +71,8 @@ public:
   /** 
    * Alterna el estado del LED (enciende si está apagado y apaga si está encendido).
    */
+
+   // alternar()
   void alternar () {
   if (encendido) {
     apagar();
@@ -76,6 +86,8 @@ public:
    * 
    * @param tiempo Tiempo en milisegundos que el LED estará encendido.
    */
+
+   // Z -> brillar()
   void brillar (long tiempo) {
   encender ();
   esperar(tiempo); 

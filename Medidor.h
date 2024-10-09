@@ -40,6 +40,8 @@ private:
      * @param Vin Valor digital a convertir.
      * @return Valor en voltios.
      */
+
+     // Z -> digToVolt() -> Z
     float digToVolt(int Vin) { 
         return ((Vin * 3.3) / 1024);
     }
@@ -55,6 +57,8 @@ private:
      * @param m Referencia a la pendiente (se modifica).
      * @return Valor calibrado.
      */
+
+    // R, R -> calibrarLectura -> R
     double calibrarLectura(double valorMedido, double &m) {
         // Ajuste manual basado en los datos proporcionados por las pruebas
         m = 0.3;  ///< Pendiente de la recta, ajustar según sea necesario.
@@ -68,6 +72,7 @@ private:
 public:
 
     // Constructor vacío
+    // Medidor()
     Medidor(){
 
     }
@@ -77,11 +82,15 @@ public:
      * @param pinVgas Pin para leer el voltaje del gas.
      * @param pinVref Pin para referencia de voltaje.
      */
+
+     // N, N -> Medidor()
     Medidor(uint8_t pinVgas, uint8_t pinVref)
         : pinVref(pinVref), pinVgas(pinVgas), ppmOzono(0), vref(0), vgas(0) {
     }
 
     // Inicializa el medidor configurando los pines
+
+    // iniciarMedidor()
     void iniciarMedidor() {
         vgas = 0;
         vref = 0;
@@ -95,6 +104,8 @@ public:
      * 
      * @return Valor calibrado de ppm de ozono.
      */
+
+     // medirGas() -> R
     double medirGas() {
         // Lee el valor de los pines del sensor
         int Agas = analogRead(pinVgas);
@@ -141,6 +152,8 @@ public:
      * 
      * @return Valor simulado de temperatura (cambiar según el sensor de temperatura).
      */
+
+     // medirTemperatura() -> Z
     int medirTemperatura() {
         return -12; // Ejemplo, cambiar según el sensor de temperatura
     }

@@ -30,6 +30,8 @@ public:
    * 
    * @param baudios Velocidad de transmisión en baudios (por ejemplo, 9600).
    */
+
+   // Z -> PuertoSerie()
   PuertoSerie (long baudios) {
   Serial.begin( baudios );
   // mejor no poner esto aquí: while ( !Serial ) delay(10);   
@@ -41,6 +43,8 @@ public:
    * Este método bloquea la ejecución hasta que la conexión serie 
    * esté lista para ser utilizada.
    */
+
+   // esperarDisponible()
   void esperarDisponible() {
 
   while ( !Serial ) {
@@ -58,6 +62,8 @@ public:
    * @tparam T Tipo del mensaje a enviar.
    * @param mensaje Mensaje que se desea enviar al puerto serie.
    */
+
+   // T -> escribir()
   template<typename T>
   void escribir (T mensaje) {
   Serial.print( mensaje );

@@ -74,6 +74,8 @@ public:
      * @param fabricanteID_ ID del fabricante.
      * @param txPower_ Potencia de transmisión.
      */
+
+     // [Texto], N, Z -> EmisoraBle()
   EmisoraBLE( const char * nombreEmisora_, const uint16_t fabricanteID_,const int8_t txPower_ ):
   nombreEmisora( nombreEmisora_ ) ,
   fabricanteID( fabricanteID_ ) ,
@@ -111,6 +113,8 @@ public:
      * Inicializa la emisora y detiene cualquier anuncio previo.
      * @return void
      */
+
+     // encenderEmisora()
   void encenderEmisora() {
   // Serial.println ( "Bluefruit.begin() " );
    Bluefruit.begin(); 
@@ -127,6 +131,8 @@ public:
      * @param cbct Callback que se ejecuta cuando se termina una conexión.
      * @return void
      */
+
+     // CallbackConexionEstablecida, CallbackConexionTerminada -> encenderEmisora()
   void encenderEmisora( CallbackConexionEstablecida cbce,
             CallbackConexionTerminada cbct ) {
 
@@ -144,6 +150,8 @@ public:
      * Si la emisora está actualmente anunciando, se detiene el anuncio.
      * @return void
      */
+
+     // detenerAnuncio()
   void detenerAnuncio() {
 
   if ( (*this).estaAnunciando() ) {
@@ -159,6 +167,8 @@ public:
      * 
      * @return true si está anunciando, false en caso contrario.
      */
+
+     // estaAnunciado() -> V o F
   bool estaAnunciando() {
   return Bluefruit.Advertising.isRunning();
   } // ()
@@ -173,6 +183,8 @@ public:
      * @param rssi Potencia de la señal recibida.
      * @return void
      */
+
+     // [N], Z, Z, N -> emitirAnuncioIBeacon()
   void emitirAnuncioIBeacon( uint8_t * beaconUUID, int16_t major, int16_t minor, uint8_t rssi ) {
 
   //
@@ -273,6 +285,8 @@ public:
      * @param tamanyoCarga Tamaño de la carga a enviar.
      * @return void
      */
+
+     // [Texto], N -> emitirAnuncioIBeaconLibre()
   void emitirAnuncioIBeaconLibre( const char * carga, const uint8_t tamanyoCarga ) {
 
   (*this).detenerAnuncio(); 
@@ -338,6 +352,8 @@ public:
      * @param servicio Referencia al servicio a añadir.
      * @return true si se añadió correctamente, false en caso contrario.
      */
+
+     // ServicioEnEmisora -> anyadirServicio() -> V o F
   bool anyadirServicio( ServicioEnEmisora & servicio ) {
 
   Globales::elPuerto.escribir( " Bluefruit.Advertising.addService( servicio ); \n");
@@ -361,6 +377,8 @@ public:
      * @param servicio Referencia al servicio a añadir.
      * @return true si se añadió correctamente, false en caso contrario.
      */
+
+     // ServicioEnEmisora -> anyadirServicioConSusCaracteristicas() -> V o F
   bool anyadirServicioConSusCaracteristicas( ServicioEnEmisora & servicio ) { 
   return (*this).anyadirServicio( servicio );
   } // 
@@ -375,6 +393,8 @@ public:
      * @param restoCaracteristicas Referencias a las características adicionales.
      * @return true si se añadieron correctamente, false en caso contrario.
      */
+
+     // ServicioEnEmisora, [ServicioEnEmisora] -> anyadirServicioConSusCaracteristicas() -> V o F
   template <typename ... T>
   bool anyadirServicioConSusCaracteristicas( ServicioEnEmisora & servicio,ServicioEnEmisora::Caracteristica & caracteristica, T& ... restoCaracteristicas) {
 
@@ -397,6 +417,7 @@ public:
      * false en caso contrario.
      */
 
+     // ServicioEnEmisora -> anyadirServicioConSusCaracteristicasYActivar() -> V o F
   template <typename ... T>
   bool anyadirServicioConSusCaracteristicasYActivar( ServicioEnEmisora & servicio,
                            // ServicioEnEmisora::Caracteristica & caracteristica,
@@ -418,6 +439,7 @@ public:
      * @param cb Callback que se invocará al establecer la conexión.
      */
 
+//CallbackConexionEstablecida -> instalarCallbackConexionEstablecida()
   void instalarCallbackConexionEstablecida( CallbackConexionEstablecida cb ) {
   Bluefruit.Periph.setConnectCallback( cb );
   } // ()
@@ -429,7 +451,8 @@ public:
      * cuando se termine una conexión.
      * @param cb Callback que se invocará al terminar la conexión.
      */
-     
+
+     // CallbackConexionTerminada -> instalarCallbackConexionTerminada()
   void instalarCallbackConexionTerminada( CallbackConexionTerminada cb ) {
   Bluefruit.Periph.setDisconnectCallback( cb );
   } // ()
@@ -442,6 +465,8 @@ public:
      * @param cb connHandle Manejador de conexión del cual se quiere obtener la conexión.
      * @return Puntero a la conexión correspondiente.
      */
+
+     // N -> BLEConnection()
   BLEConnection * getConexion( uint16_t connHandle ) {
   return Bluefruit.Connection( connHandle );
   } // ()

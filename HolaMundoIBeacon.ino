@@ -61,6 +61,8 @@ namespace Globales {
  * 
  * @return No devuelve ningún valor.
  */
+
+ // inicializarPlaquita()
 void inicializarPlaquita () {
 
   // de momento nada
@@ -74,6 +76,8 @@ void inicializarPlaquita () {
  * para el funcionamiento del sistema.
  * return No devuelve ningún valor.
  */
+
+ // setup()
 void setup() {
   Globales::elPuerto.esperarDisponible(); // Espera a que el puerto esté disponible
 
@@ -95,6 +99,7 @@ void setup() {
  * @return No devuelve ningún valor.
  */
 
+// lucecitas()
 inline void lucecitas() {
   using namespace Globales;
 
@@ -119,6 +124,8 @@ namespace Loop {
  * así como de controlar la emisión BLE.
  * @return No devuelve ningún valor.
  */ 
+
+ // loop()
  void loop () {
 
   using namespace Loop;
