@@ -60,7 +60,8 @@ public:
    * ATENCIÓN: no encender la emisora en el constructor. 
    * Se debe llamar a encenderEmisora() desde el método setup() más tarde.
    -------------------------------------------------------------- */
-  
+   
+  // Publicador()
   Publicador( ) {
   // ATENCION: no hacerlo aquí. (*this).laEmisora.encenderEmisora();
   // Pondremos un método para llamarlo desde el setup() más tarde
@@ -68,6 +69,8 @@ public:
 
   // ............................................................
   // Método para encender la emisora BLE.
+
+  // encenderEmisora()
   void encenderEmisora() {
   (*this).laEmisora.encenderEmisora();
   } // ()
@@ -82,6 +85,8 @@ public:
    * @param tiempoEspera El tiempo en milisegundos a esperar 
    *                     antes de detener el anuncio.
    -------------------------------------------------------------- */
+
+   // R, N, Z -> publicarCO2()
   void publicarCO2( double valorCO2, uint8_t contador, long tiempoEspera ) {
 
   //
@@ -121,6 +126,8 @@ public:
    * @param tiempoEspera El tiempo en milisegundos a esperar 
    *                     antes de detener el anuncio.
    -------------------------------------------------------------- */
+
+   // Z, N, Z -> publicarTemperatura()
   void publicarTemperatura( int16_t valorTemperatura, uint8_t contador, long tiempoEspera ) {
 
   uint16_t major = (MedicionesID::TEMPERATURA << 8) + contador;

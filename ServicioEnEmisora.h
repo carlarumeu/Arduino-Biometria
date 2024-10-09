@@ -29,6 +29,8 @@
  * @param n Tamaño del array.
  * @return Puntero al array invertido.
  */
+
+ // [T], Z -> alReves() -> [T]
 template< typename T >
 T* alReves(T* p, int n) {
   T aux;
@@ -51,6 +53,8 @@ T* alReves(T* p, int n) {
  * @param tamMax Tamaño máximo del array de salida.
  * @return Puntero al array de salida.
  */
+
+ // [Texto], [N], Z -> stringAUint8AlReves -> [N]
 uint8_t* stringAUint8AlReves(const char* pString, uint8_t* pUint, int tamMax) {
 
   int longitudString = strlen(pString);
@@ -97,6 +101,8 @@ public:
      * 
      * @param nombreCaracteristica_ Nombre de la característica.
      */
+
+     // [Texto] -> Caracteristica()
     Caracteristica(const char* nombreCaracteristica_) : laCaracteristica(stringAUint8AlReves(nombreCaracteristica_, &uuidCaracteristica[0], 16)) {
 
     }  // ()
@@ -110,6 +116,8 @@ public:
      * @param permisoWrite Permiso de escritura.
      * @param tam Tamaño de los datos.
      */
+
+     [Texto], N, SecureMode_t, SecureMode_t -> Caracteristica()
     Caracteristica(const char* nombreCaracteristica_, uint8_t props, SecureMode_t permisoRead, SecureMode_t permisoWrite, uint8_t tam): Caracteristica(nombreCaracteristica_)  // llamada al otro constructor
     {
       (*this).asignarPropiedadesPermisosYTamanyoDatos(props, permisoRead, permisoWrite, tam);
@@ -121,6 +129,8 @@ public:
      * 
      * @param props Propiedades a asignar.
      */
+
+     // N -> asignarPropiedades()
     void asignarPropiedades(uint8_t props) {
       // no puedo escribir AUN si el constructor llama a esto: Serial.println( " laCaracteristica.setProperties( props ); ");
       (*this).laCaracteristica.setProperties(props);
@@ -132,6 +142,8 @@ public:
      * @param permisoRead Permiso de lectura.
      * @param permisoWrite Permiso de escritura.
      */
+
+     // SecureMode_t, SecureMode_t -> asignarPermisos()
     void asignarPermisos(SecureMode_t permisoRead, SecureMode_t permisoWrite) {
       // no puedo escribir AUN si el constructor llama a esto: Serial.println( "laCaracteristica.setPermission( permisoRead, permisoWrite ); " );
       (*this).laCaracteristica.setPermission(permisoRead, permisoWrite);
@@ -142,6 +154,8 @@ public:
      * 
      * @param tam Tamaño de los datos.
      */
+
+     // N -> asignarTamanyoDatos()
     void asignarTamanyoDatos(uint8_t tam) {
       // no puedo escribir AUN si el constructor llama a esto: Serial.print( " (*this).laCaracteristica.setFixedLen( tam = " );
       // no puedo escribir AUN si el constructor llama a esto: Serial.println( tam );
@@ -158,6 +172,8 @@ public:
      * @param permisoWrite Permiso de escritura.
      * @param tam Tamaño de los datos.
      */
+
+     // N, SecureMode_t, SecureMode_t, N -> asignarPropiedadesPermisosYTamanyoDatos()
     void asignarPropiedadesPermisosYTamanyoDatos(uint8_t props, SecureMode_t permisoRead, SecureMode_t permisoWrite, uint8_t tam) {
       asignarPropiedades(props);
       asignarPermisos(permisoRead, permisoWrite);
@@ -170,6 +186,8 @@ public:
      * @param str Cadena a escribir en la característica.
      * @return Número de bytes escritos.
      */
+
+     // [Texto] -> escribirDatos() -> N
     uint16_t escribirDatos(const char* str) {
       // Serial.print( " return (*this).laCaracteristica.write( str  = " );
       // Serial.println( str );
@@ -186,6 +204,8 @@ public:
      * @param str Cadena a notificar.
      * @return Número de bytes notificados.
      */
+
+     //[Texto] -> notificarDatos() -> N
     uint16_t notificarDatos(const char* str) {
 
       uint16_t r = laCaracteristica.notify(&str[0]);
@@ -198,6 +218,8 @@ public:
      * 
      * @param cb Callback a instalar.
      */
+
+     // CallbackCaracteristicaEscrita -> instalarCallbackCaracteristicaEscrita()
     void instalarCallbackCaracteristicaEscrita(CallbackCaracteristicaEscrita cb) {
       (*this).laCaracteristica.setWriteCallback(cb);
     }  // ()
@@ -205,6 +227,8 @@ public:
     /**
      * @brief Activa la característica.
      */
+
+     // activar()
     void activar() {
       err_t error = (*this).laCaracteristica.begin();
       Globales::elPuerto.escribir(" (*this).laCaracteristica.begin(); error = ");
@@ -235,6 +259,8 @@ public:
    * 
    * @param nombreServicio_ Nombre del servicio.
    */
+
+   // [Texto] -> ServicioEnEmisora()
   ServicioEnEmisora(const char* nombreServicio_)
   : elServicio(stringAUint8AlReves(nombreServicio_, &uuidServicio[0], 16)) {
 
@@ -243,6 +269,8 @@ public:
   /**
    * @brief Escribe el UUID del servicio en el puerto serie.
    */
+
+   // escribeUUID()
   void escribeUUID() {
     Serial.println("");
     for (int i = 0; i <= 15; i++) {
@@ -256,6 +284,8 @@ public:
    * 
    * @param car Referencia a la característica a añadir.
    */
+
+   // Caracteristica -> anyadirCaracteristica()
   void anyadirCaracteristica(Caracteristica& car) {
     (*this).lasCaracteristicas.push_back(&car);
   }  // ()
@@ -263,6 +293,8 @@ public:
   /**
    * @brief Activa el servicio y todas sus características.
    */
+
+   // activarServicio()
   void activarServicio() {
     // Se supone que todo ya ha sido configurado: características y servicio
         
@@ -279,6 +311,8 @@ public:
   /**
    * @brief Conversión de tipo implícita a BLEService.
    */
+
+   // BLEService()
   operator BLEService&() {
     // "conversión de tipo": si pongo esta clase en un sitio donde necesitan un BLEService
     return elServicio;
