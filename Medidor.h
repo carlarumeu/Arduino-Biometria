@@ -1,10 +1,10 @@
 /*
  * Nombre del fichero: Medidor.h
  * Descripción: Definición de la clase Medidor para medir gas y temperatura.
- * Autores: Carla Rumeu Montesinos y Elena Ruiz de la Blanca
+ * Autores: Álex Escrivá Caravaca, Elena Ruiz de la Blanca y Carla Rumeu Montesinos.
  * Fecha: 30 de septiembre de 2024
  *
- * Este archivo ha sido realizado por Carla Rumeu Montesinos y Elena Ruiz de la Blanca el 30 de septiembre de 2024.
+ * Este archivo ha sido realizado por Álex Escrivá Caravaca, Elena Ruiz de la Blanca y Carla Rumeu Montesinos el 30 de septiembre de 2024.
  * Contiene la implementación de la clase Medidor, que permite medir la concentración de ozono en partes por millón (ppm) 
  * y proporciona un método de ejemplo para medir la temperatura.
  * 
