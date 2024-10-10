@@ -1,0 +1,159 @@
+\doxysubsection{Referencia de la clase Servicio\+En\+Emisora}
+\label{a00043}\index{ServicioEnEmisora@{ServicioEnEmisora}}
+
+
+Clase \doxyref{Servicio\+En\+Emisora}{pág.}{d6/d42/a00043} para manejar servicios y características en una emisora BLE.  
+
+
+
+
+{\ttfamily \#include $<$Servicio\+En\+Emisora.\+h$>$}
+
+
+
+Diagrama de colaboración de Servicio\+En\+Emisora\+:
+% FIG 0
+\doxysubsubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \textbf{ Caracteristica}
+\begin{DoxyCompactList}\small\item\em Clase \doxyref{Caracteristica}{pág.}{d6/d2d/a00047} para manejar características de BLE. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Tipos públicos}
+\begin{DoxyCompactItemize}
+\item 
+using \textbf{ Callback\+Caracteristica\+Escrita} = void(uint16\+\_\+t conn\+\_\+handle, BLECharacteristic$\ast$ chr, uint8\+\_\+t$\ast$ data, uint16\+\_\+t len)
+\begin{DoxyCompactList}\small\item\em Definición de un tipo para el callback de características escritas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Servicio\+En\+Emisora} (const char $\ast$nombre\+Servicio\+\_\+)
+\begin{DoxyCompactList}\small\item\em Constructor de \doxyref{Servicio\+En\+Emisora}{pág.}{d6/d42/a00043} que inicializa el UUID del servicio. \end{DoxyCompactList}\item 
+void \textbf{ escribe\+UUID} ()
+\begin{DoxyCompactList}\small\item\em Escribe el UUID del servicio en el puerto serie. \end{DoxyCompactList}\item 
+void \textbf{ anyadir\+Caracteristica} (\textbf{ Caracteristica} \&car)
+\begin{DoxyCompactList}\small\item\em Añade una característica al servicio. \end{DoxyCompactList}\item 
+void \textbf{ activar\+Servicio} ()
+\begin{DoxyCompactList}\small\item\em Activa el servicio y todas sus características. \end{DoxyCompactList}\item 
+\textbf{ operator BLEService \&} ()
+\begin{DoxyCompactList}\small\item\em Conversión de tipo implícita a BLEService. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Descripción detallada}
+Clase \doxyref{Servicio\+En\+Emisora}{pág.}{d6/d42/a00043} para manejar servicios y características en una emisora BLE. 
+
+Esta clase permite definir un servicio y sus características, manejar propiedades y permisos, y activar el servicio. 
+
+Definición en la línea \textbf{ 71} del archivo \textbf{ Servicio\+En\+Emisora.\+h}.
+
+
+
+\doxysubsubsection{Documentación de los «\+Typedef» miembros de la clase}
+\index{ServicioEnEmisora@{ServicioEnEmisora}!CallbackCaracteristicaEscrita@{CallbackCaracteristicaEscrita}}
+\index{CallbackCaracteristicaEscrita@{CallbackCaracteristicaEscrita}!ServicioEnEmisora@{ServicioEnEmisora}}
+\doxyparagraph{CallbackCaracteristicaEscrita}
+{\footnotesize\ttfamily \label{a00043_a6a0a978dc740dc0d6cce5ac5013d4f0e_a6a0a978dc740dc0d6cce5ac5013d4f0e} 
+using \textbf{ Servicio\+En\+Emisora\+::\+Callback\+Caracteristica\+Escrita} = void(uint16\+\_\+t conn\+\_\+handle, BLECharacteristic$\ast$ chr, uint8\+\_\+t$\ast$ data, uint16\+\_\+t len)}
+
+
+
+Definición de un tipo para el callback de características escritas. 
+
+
+
+Definición en la línea \textbf{ 77} del archivo \textbf{ Servicio\+En\+Emisora.\+h}.
+
+
+
+\doxysubsubsection{Documentación de constructores y destructores}
+\index{ServicioEnEmisora@{ServicioEnEmisora}!ServicioEnEmisora@{ServicioEnEmisora}}
+\index{ServicioEnEmisora@{ServicioEnEmisora}!ServicioEnEmisora@{ServicioEnEmisora}}
+\doxyparagraph{ServicioEnEmisora()}
+{\footnotesize\ttfamily \label{a00043_a17d9dcafb552b3e76bc7ff2e6fb238f2_a17d9dcafb552b3e76bc7ff2e6fb238f2} 
+Servicio\+En\+Emisora\+::\+Servicio\+En\+Emisora (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nombre\+Servicio\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor de \doxyref{Servicio\+En\+Emisora}{pág.}{d6/d42/a00043} que inicializa el UUID del servicio. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em nombre\+Servicio\+\_\+} & Nombre del servicio. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \textbf{ 238} del archivo \textbf{ Servicio\+En\+Emisora.\+h}.
+
+
+
+\doxysubsubsection{Documentación de funciones miembro}
+\index{ServicioEnEmisora@{ServicioEnEmisora}!activarServicio@{activarServicio}}
+\index{activarServicio@{activarServicio}!ServicioEnEmisora@{ServicioEnEmisora}}
+\doxyparagraph{activarServicio()}
+{\footnotesize\ttfamily \label{a00043_a387f170420610e1ba1fe71b471c1ca23_a387f170420610e1ba1fe71b471c1ca23} 
+void Servicio\+En\+Emisora\+::activar\+Servicio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Activa el servicio y todas sus características. 
+
+
+
+Definición en la línea \textbf{ 266} del archivo \textbf{ Servicio\+En\+Emisora.\+h}.
+
+Gráfico de llamadas a esta función\+:
+% FIG 1
+\index{ServicioEnEmisora@{ServicioEnEmisora}!anyadirCaracteristica@{anyadirCaracteristica}}
+\index{anyadirCaracteristica@{anyadirCaracteristica}!ServicioEnEmisora@{ServicioEnEmisora}}
+\doxyparagraph{anyadirCaracteristica()}
+{\footnotesize\ttfamily \label{a00043_af25a77d5c2b3edfe5c99fc9fa00729bf_af25a77d5c2b3edfe5c99fc9fa00729bf} 
+void Servicio\+En\+Emisora\+::anyadir\+Caracteristica (\begin{DoxyParamCaption}\item[{\textbf{ Caracteristica} \&}]{car}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Añade una característica al servicio. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em car} & Referencia a la característica a añadir. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \textbf{ 259} del archivo \textbf{ Servicio\+En\+Emisora.\+h}.
+
+Gráfico de llamadas a esta función\+:
+% FIG 2
+\index{ServicioEnEmisora@{ServicioEnEmisora}!escribeUUID@{escribeUUID}}
+\index{escribeUUID@{escribeUUID}!ServicioEnEmisora@{ServicioEnEmisora}}
+\doxyparagraph{escribeUUID()}
+{\footnotesize\ttfamily \label{a00043_a59267e82dca13b83913e578efacce794_a59267e82dca13b83913e578efacce794} 
+void Servicio\+En\+Emisora\+::escribe\+UUID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Escribe el UUID del servicio en el puerto serie. 
+
+
+
+Definición en la línea \textbf{ 246} del archivo \textbf{ Servicio\+En\+Emisora.\+h}.
+
+\index{ServicioEnEmisora@{ServicioEnEmisora}!operator BLEService \&@{operator BLEService \&}}
+\index{operator BLEService \&@{operator BLEService \&}!ServicioEnEmisora@{ServicioEnEmisora}}
+\doxyparagraph{operator BLEService \&()}
+{\footnotesize\ttfamily \label{a00043_a0d04b53b2379140293924ef1ecbfeebe_a0d04b53b2379140293924ef1ecbfeebe} 
+Servicio\+En\+Emisora\+::operator BLEService \& (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Conversión de tipo implícita a BLEService. 
+
+
+
+Definición en la línea \textbf{ 282} del archivo \textbf{ Servicio\+En\+Emisora.\+h}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Servicio\+En\+Emisora.\+h}\end{DoxyCompactItemize}

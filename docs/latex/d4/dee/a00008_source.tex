@@ -1,0 +1,115 @@
+\doxysubsection{Medidor.\+h}
+\label{a00008_source}\index{Medidor.h@{Medidor.h}}
+\textbf{ Ir a la documentación de este archivo.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Nombre\ del\ fichero:\ Medidor.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Descripción:\ Definición\ de\ la\ clase\ Medidor\ para\ medir\ gas\ y\ temperatura.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Autores:\ Carla\ Rumeu\ Montesinos\ y\ Elena\ Ruiz\ de\ la\ Blanca}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Fecha:\ 30\ de\ septiembre\ de\ 2024}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ Este\ archivo\ ha\ sido\ realizado\ por\ Carla\ Rumeu\ Montesinos\ y\ Elena\ Ruiz\ de\ la\ Blanca\ el\ 30\ de\ septiembre\ de\ 2024.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ Contiene\ la\ implementación\ de\ la\ clase\ Medidor,\ que\ permite\ medir\ la\ concentración\ de\ ozono\ en\ partes\ por\ millón\ (ppm)\ }}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ y\ proporciona\ un\ método\ de\ ejemplo\ para\ medir\ la\ temperatura.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ Todos\ los\ derechos\ reservados.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ MEDIDOR\_H\_INCLUIDO}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ MEDIDOR\_H\_INCLUIDO}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <Arduino.h>}\ \textcolor{comment}{//\ Incluir\ la\ librería\ de\ Arduino\ para\ funciones\ como\ analogRead,\ pinMode,\ etc.}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }Medidor\ \{}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ uint8\_t\ pinVref;\ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ uint8\_t\ pinVgas;\ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{double}\ ppmOzono;\ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{float}\ vref;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ vgas;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{float}\ digToVolt(\textcolor{keywordtype}{int}\ Vin)\ \{\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((Vin\ *\ 3.3)\ /\ 1024);}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{double}\ calibrarLectura(\textcolor{keywordtype}{double}\ valorMedido,\ \textcolor{keywordtype}{double}\ \&m)\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ajuste\ manual\ basado\ en\ los\ datos\ proporcionados\ por\ las\ pruebas}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ m\ =\ 0.3;\ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ b\ =\ -\/1.5;\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ valorCalibrado\ =\ m\ *\ valorMedido\ +\ b;\ \textcolor{comment}{//\ Calcula\ el\ valor\ calibrado}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ el\ valor\ calibrado\ es\ negativo,\ devuelve\ 0}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ valorCalibrado\ >\ 0\ ?\ valorCalibrado\ :\ 0;}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ Constructor\ vacío}}
+\DoxyCodeLine{00071\ \ \ \ \ Medidor()\{}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ \ \ Medidor(uint8\_t\ pinVgas,\ uint8\_t\ pinVref)}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ :\ pinVref(pinVref),\ pinVgas(pinVgas),\ ppmOzono(0),\ vref(0),\ vgas(0)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Inicializa\ el\ medidor\ configurando\ los\ pines}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ iniciarMedidor()\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ vgas\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ vref\ =\ 0;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ ppmOzono\ =\ 0;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ pinMode(pinVref,\ INPUT);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ pinMode(pinVgas,\ INPUT);}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{double}\ medirGas()\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lee\ el\ valor\ de\ los\ pines\ del\ sensor}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Agas\ =\ analogRead(pinVgas);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Aref\ =\ analogRead(pinVref);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convierte\ el\ valor\ digital\ a\ voltios}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ vgas\ =\ digToVolt(Agas);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ vref\ =\ digToVolt(Aref);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Constante\ de\ conversión\ basada\ en\ la\ especificación\ del\ sensor}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ M\ =\ -\/41.96\ *\ 499\ *\ (0.000001);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calcula\ las\ ppm\ de\ ozono}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ res\ =\ ((1\ /\ M)\ *\ (vgas\ -\/\ vref));}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ el\ resultado\ es\ negativo,\ devuelve\ 0}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ ppmOzono\ =\ res\ >\ 0\ ?\ res\ :\ 0;\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Almacenar\ el\ valor\ de\ la\ pendiente}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ m;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Aplicamos\ la\ calibración\ lineal\ al\ valor\ de\ ppmOzono}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ppmCalibrado\ =\ calibrarLectura(ppmOzono,\ m);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calcular\ el\ valor\ de\ ppmOzono\ *\ 10}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ppm10\ =\ (int)(ppmOzono\ *\ 10);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Imprimir\ valores\ de\ referencia,\ gas\ leídos,\ m,\ ppmOzono\ *\ 10\ y\ el\ valor\ calibrado}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}VGAS:\ "{}});}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ Serial.println(vgas);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}VREF:\ "{}});}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ Serial.println(vref);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}M:\ "{}});}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ Serial.println(M);\ \textcolor{comment}{//\ Mostrar\ el\ valor\ de\ M}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}PPM\ Ozono\ *\ 10:\ "{}});}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ Serial.println(ppm10);\ \textcolor{comment}{//\ Mostrar\ el\ valor\ de\ ppmOzono\ *\ 10}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}PPM\ Ozono\ (calibrado):\ "{}});}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ Serial.println(ppmCalibrado);\ \textcolor{comment}{//\ Mostrar\ solo\ el\ valor\ calibrado}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ppmCalibrado;\ \textcolor{comment}{//\ Devuelve\ el\ valor\ calibrado}}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{int}\ medirTemperatura()\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/12;\ \textcolor{comment}{//\ Ejemplo,\ cambiar\ según\ el\ sensor\ de\ temperatura}}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \};\ \textcolor{comment}{//\ class\ Medidor}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MEDIDOR\_H\_INCLUIDO}}
+
+\end{DoxyCode}

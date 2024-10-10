@@ -1,0 +1,120 @@
+\doxysubsection{Referencia de la clase Medidor}
+\label{a00031}\index{Medidor@{Medidor}}
+
+
+{\ttfamily \#include $<$Medidor.\+h$>$}
+
+
+
+Diagrama de colaboración de Medidor\+:
+% FIG 0
+\doxysubsubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Medidor} ()
+\item 
+\textbf{ Medidor} (uint8\+\_\+t pin\+Vgas, uint8\+\_\+t pin\+Vref)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \textbf{ iniciar\+Medidor} ()
+\item 
+double \textbf{ medir\+Gas} ()
+\begin{DoxyCompactList}\small\item\em Mide el gas y devuelve el valor de ppm de ozono calibrado. \end{DoxyCompactList}\item 
+int \textbf{ medir\+Temperatura} ()
+\begin{DoxyCompactList}\small\item\em Función de ejemplo para medir la temperatura. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Descripción detallada}
+\DoxyHorRuler{0}
+ Clase \doxyref{Medidor}{pág.}{df/d61/a00031} para medir gas y temperatura
+
+Esta clase permite medir la concentración de ozono en partes por millón (ppm) \doxysubsubsubsection{y proporciona un método de ejemplo para medir la temperatura.}\label{a00031_autotoc_md1}
+
+
+Definición en la línea \textbf{ 27} del archivo \textbf{ Medidor.\+h}.
+
+
+
+\doxysubsubsection{Documentación de constructores y destructores}
+\index{Medidor@{Medidor}!Medidor@{Medidor}}
+\index{Medidor@{Medidor}!Medidor@{Medidor}}
+\doxyparagraph{Medidor()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{a00031_af8dd93b883c64f28bd898c4baaa73dc9_af8dd93b883c64f28bd898c4baaa73dc9} 
+Medidor\+::\+Medidor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definición en la línea \textbf{ 71} del archivo \textbf{ Medidor.\+h}.
+
+\index{Medidor@{Medidor}!Medidor@{Medidor}}
+\index{Medidor@{Medidor}!Medidor@{Medidor}}
+\doxyparagraph{Medidor()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{a00031_ae464be04be7a9ac1c57f30e9b3ac717c_ae464be04be7a9ac1c57f30e9b3ac717c} 
+Medidor\+::\+Medidor (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pin\+Vgas}{, }\item[{uint8\+\_\+t}]{pin\+Vref}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em pin\+Vgas} & Pin para leer el voltaje del gas. \\
+\hline
+{\em pin\+Vref} & Pin para referencia de voltaje. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \textbf{ 80} del archivo \textbf{ Medidor.\+h}.
+
+
+
+\doxysubsubsection{Documentación de funciones miembro}
+\index{Medidor@{Medidor}!iniciarMedidor@{iniciarMedidor}}
+\index{iniciarMedidor@{iniciarMedidor}!Medidor@{Medidor}}
+\doxyparagraph{iniciarMedidor()}
+{\footnotesize\ttfamily \label{a00031_a1d26e993a9198fac83d6edad4cc30bcf_a1d26e993a9198fac83d6edad4cc30bcf} 
+void Medidor\+::iniciar\+Medidor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definición en la línea \textbf{ 85} del archivo \textbf{ Medidor.\+h}.
+
+\index{Medidor@{Medidor}!medirGas@{medirGas}}
+\index{medirGas@{medirGas}!Medidor@{Medidor}}
+\doxyparagraph{medirGas()}
+{\footnotesize\ttfamily \label{a00031_a6dd6f1beb9e8fe2e2bfbc1e141ad67e7_a6dd6f1beb9e8fe2e2bfbc1e141ad67e7} 
+double Medidor\+::medir\+Gas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mide el gas y devuelve el valor de ppm de ozono calibrado. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor calibrado de ppm de ozono. 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 98} del archivo \textbf{ Medidor.\+h}.
+
+\index{Medidor@{Medidor}!medirTemperatura@{medirTemperatura}}
+\index{medirTemperatura@{medirTemperatura}!Medidor@{Medidor}}
+\doxyparagraph{medirTemperatura()}
+{\footnotesize\ttfamily \label{a00031_a742eaebe02e1d1d67df55f7a73878421_a742eaebe02e1d1d67df55f7a73878421} 
+int Medidor\+::medir\+Temperatura (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Función de ejemplo para medir la temperatura. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor simulado de temperatura (cambiar según el sensor de temperatura). 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 144} del archivo \textbf{ Medidor.\+h}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Medidor.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,14 @@
+digraph "LED::encender"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="LED::encender",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Enciende el LED."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="LED::alternar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d0/d33/a00027_a9b1361dbee5de756d142b1a2c3e685da.html#a9b1361dbee5de756d142b1a2c3e685da",tooltip="Alterna el estado del LED (enciende si está apagado y apaga si está encendido)."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="LED::brillar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d0/d33/a00027_a7431e9efb39a2890f75b4e235b8f617e.html#a7431e9efb39a2890f75b4e235b8f617e",tooltip="Hace que el LED brille durante un tiempo determinado."];
+}
