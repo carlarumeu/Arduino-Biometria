@@ -1,10 +1,10 @@
 /*
  * Nombre del fichero: ServicioEnEmisora.h
  * Descripción: Definición de una clase para gestionar servicios y características en una emisora BLE.
- * Autores: Carla Rumeu Montesinos y Elena Ruiz de la Blanca
+ * Autores: Álex Escrivá Caravaca, Elena Ruiz de la Blanca y Carla Rumeu Montesinos.
  * Fecha: 30 de septiembre de 2024
  *
- * Este archivo ha sido realizado por Carla Rumeu Montesinos y Elena Ruiz de la Blanca el 30 de septiembre de 2024.
+ * Este archivo ha sido realizado por Álex Escrivá Caravaca, Elena Ruiz de la Blanca y Carla Rumeu Montesinos el 30 de septiembre de 2024.
  * Contiene la implementación de la clase ServicioEnEmisora, que permite la configuración, activación y manejo de servicios
  * BLE, así como la gestión de características con permisos y propiedades.
  * 

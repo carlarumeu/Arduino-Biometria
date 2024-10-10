@@ -1,0 +1,84 @@
+\doxysubsection{Referencia del archivo Servicio\+En\+Emisora.\+h}
+\label{a00017}\index{ServicioEnEmisora.h@{ServicioEnEmisora.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+Gráfico de dependencias incluidas en Servicio\+En\+Emisora.\+h\+:
+% FIG 0
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo\+:
+% FIG 1
+\doxysubsubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \textbf{ Servicio\+En\+Emisora}
+\begin{DoxyCompactList}\small\item\em Clase \doxyref{Servicio\+En\+Emisora}{pág.}{d6/d42/a00043} para manejar servicios y características en una emisora BLE. \end{DoxyCompactList}\item 
+class \textbf{ Servicio\+En\+Emisora\+::\+Caracteristica}
+\begin{DoxyCompactList}\small\item\em Clase \doxyref{Caracteristica}{pág.}{d6/d2d/a00047} para manejar características de BLE. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ \textbf{ al\+Reves} (T $\ast$p, int n)
+\begin{DoxyCompactList}\small\item\em Utilidad \doxyref{al\+Reves()}{pág.}{d4/d51/a00017_aada7529d57b6678988eaa3e0acf84aff_aada7529d57b6678988eaa3e0acf84aff} para invertir el contenido de un array. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \textbf{ string\+AUint8\+Al\+Reves} (const char $\ast$p\+String, uint8\+\_\+t $\ast$p\+Uint, int tam\+Max)
+\begin{DoxyCompactList}\small\item\em Convierte un string a un array de uint8\+\_\+t al revés. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Documentación de funciones}
+\index{ServicioEnEmisora.h@{ServicioEnEmisora.h}!alReves@{alReves}}
+\index{alReves@{alReves}!ServicioEnEmisora.h@{ServicioEnEmisora.h}}
+\doxyparagraph{alReves()}
+{\footnotesize\ttfamily \label{a00017_aada7529d57b6678988eaa3e0acf84aff_aada7529d57b6678988eaa3e0acf84aff} 
+template$<$typename T $>$ \\
+T $\ast$ al\+Reves (\begin{DoxyParamCaption}\item[{T $\ast$}]{p}{, }\item[{int}]{n}{}\end{DoxyParamCaption})}
+
+
+
+Utilidad \doxyref{al\+Reves()}{pág.}{d4/d51/a00017_aada7529d57b6678988eaa3e0acf84aff_aada7529d57b6678988eaa3e0acf84aff} para invertir el contenido de un array. 
+
+Esta función invierte el contenido de un array de tipo T.
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de los elementos del array. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parámetros}
+{\em p} & Puntero al array a invertir. \\
+\hline
+{\em n} & Tamaño del array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Puntero al array invertido. 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 33} del archivo \textbf{ Servicio\+En\+Emisora.\+h}.
+
+\index{ServicioEnEmisora.h@{ServicioEnEmisora.h}!stringAUint8AlReves@{stringAUint8AlReves}}
+\index{stringAUint8AlReves@{stringAUint8AlReves}!ServicioEnEmisora.h@{ServicioEnEmisora.h}}
+\doxyparagraph{stringAUint8AlReves()}
+{\footnotesize\ttfamily \label{a00017_a4493ee26019e14ff5945192a58d5da3a_a4493ee26019e14ff5945192a58d5da3a} 
+uint8\+\_\+t $\ast$ string\+AUint8\+Al\+Reves (\begin{DoxyParamCaption}\item[{const char $\ast$}]{p\+String}{, }\item[{uint8\+\_\+t $\ast$}]{p\+Uint}{, }\item[{int}]{tam\+Max}{}\end{DoxyParamCaption})}
+
+
+
+Convierte un string a un array de uint8\+\_\+t al revés. 
+
+Esta función copia el contenido de una cadena a un array de uint8\+\_\+t en orden inverso.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+String} & Puntero a la cadena de entrada. \\
+\hline
+{\em p\+Uint} & Puntero al array de salida donde se copia el contenido. \\
+\hline
+{\em tam\+Max} & Tamaño máximo del array de salida. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Puntero al array de salida. 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 54} del archivo \textbf{ Servicio\+En\+Emisora.\+h}.
+

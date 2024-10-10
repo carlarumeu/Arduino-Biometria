@@ -1,0 +1,16 @@
+digraph "EmisoraBLE::encenderEmisora"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="EmisoraBLE::encenderEmisora",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Enciende la emisora y establece callbacks."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="EmisoraBLE::encenderEmisora",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d52/a00023_a31f9c768b91b9e353f693f509af3ea73.html#a31f9c768b91b9e353f693f509af3ea73",tooltip="Enciende la emisora BLE."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="EmisoraBLE::instalarCallback\lConexionEstablecida",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d52/a00023_ae15e223776af83a8cac07564c168d0b9.html#ae15e223776af83a8cac07564c168d0b9",tooltip="Instala un callback para la conexión establecida."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="EmisoraBLE::instalarCallback\lConexionTerminada",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d52/a00023_a2bb6b319046a10641619c1388f7fe351.html#a2bb6b319046a10641619c1388f7fe351",tooltip="Instala un callback para la conexión terminada."];
+}

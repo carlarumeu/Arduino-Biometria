@@ -90,4 +90,8 @@ Las contribuciones son bienvenidas. Si deseas contribuir, por favor, haz un fork
 
 Este proyecto está licenciado bajo la MIT License. Para más detalles, consulta el archivo LICENSE.
 
+## Proyectos relacionados
+https://github.com/carlarumeu/web_biometria
+https://github.com/carlarumeu/android_biometria 
+
 Hecho con :heart: por Carla Rumeu Montesinos

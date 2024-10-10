@@ -1,0 +1,106 @@
+\doxysubsection{Referencia de la clase Puerto\+Serie}
+\label{a00039}\index{PuertoSerie@{PuertoSerie}}
+
+
+Clase \doxyref{Puerto\+Serie}{pág.}{d3/de7/a00039} para la comunicación a través del puerto serie.  
+
+
+
+
+{\ttfamily \#include $<$Puerto\+Serie.\+h$>$}
+
+
+
+Diagrama de colaboración de Puerto\+Serie\+:
+% FIG 0
+\doxysubsubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Puerto\+Serie} (long baudios)
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \doxyref{Puerto\+Serie}{pág.}{d3/de7/a00039}. \end{DoxyCompactList}\item 
+void \textbf{ esperar\+Disponible} ()
+\begin{DoxyCompactList}\small\item\em Espera a que la comunicación serie esté disponible. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \textbf{ escribir} (T mensaje)
+\begin{DoxyCompactList}\small\item\em Envía un mensaje a través del puerto serie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Descripción detallada}
+Clase \doxyref{Puerto\+Serie}{pág.}{d3/de7/a00039} para la comunicación a través del puerto serie. 
+
+Esta clase simplifica la inicialización y la escritura en el puerto serie de un microcontrolador, como un Arduino. 
+
+Definición en la línea \textbf{ 23} del archivo \textbf{ Puerto\+Serie.\+h}.
+
+
+
+\doxysubsubsection{Documentación de constructores y destructores}
+\index{PuertoSerie@{PuertoSerie}!PuertoSerie@{PuertoSerie}}
+\index{PuertoSerie@{PuertoSerie}!PuertoSerie@{PuertoSerie}}
+\doxyparagraph{PuertoSerie()}
+{\footnotesize\ttfamily \label{a00039_a8f0bfae3f90577642131689eab4489b1_a8f0bfae3f90577642131689eab4489b1} 
+Puerto\+Serie\+::\+Puerto\+Serie (\begin{DoxyParamCaption}\item[{long}]{baudios}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor de la clase \doxyref{Puerto\+Serie}{pág.}{d3/de7/a00039}. 
+
+Inicializa la comunicación serie a la velocidad especificada.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em baudios} & Velocidad de transmisión en baudios (por ejemplo, 9600). \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \textbf{ 33} del archivo \textbf{ Puerto\+Serie.\+h}.
+
+
+
+\doxysubsubsection{Documentación de funciones miembro}
+\index{PuertoSerie@{PuertoSerie}!escribir@{escribir}}
+\index{escribir@{escribir}!PuertoSerie@{PuertoSerie}}
+\doxyparagraph{escribir()}
+{\footnotesize\ttfamily \label{a00039_ab1b6cecc098aa30e5704dc294deec1f4_ab1b6cecc098aa30e5704dc294deec1f4} 
+template$<$typename T $>$ \\
+void Puerto\+Serie\+::escribir (\begin{DoxyParamCaption}\item[{T}]{mensaje}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Envía un mensaje a través del puerto serie. 
+
+Este método utiliza la sobrecarga de funciones para permitir el envío de diferentes tipos de datos.
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo del mensaje a enviar. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parámetros}
+{\em mensaje} & Mensaje que se desea enviar al puerto serie. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \textbf{ 62} del archivo \textbf{ Puerto\+Serie.\+h}.
+
+\index{PuertoSerie@{PuertoSerie}!esperarDisponible@{esperarDisponible}}
+\index{esperarDisponible@{esperarDisponible}!PuertoSerie@{PuertoSerie}}
+\doxyparagraph{esperarDisponible()}
+{\footnotesize\ttfamily \label{a00039_acdb696d30440a38dac61f5f73625935a_acdb696d30440a38dac61f5f73625935a} 
+void Puerto\+Serie\+::esperar\+Disponible (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Espera a que la comunicación serie esté disponible. 
+
+Este método bloquea la ejecución hasta que la conexión serie esté lista para ser utilizada. 
+
+Definición en la línea \textbf{ 44} del archivo \textbf{ Puerto\+Serie.\+h}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Puerto\+Serie.\+h}\end{DoxyCompactItemize}

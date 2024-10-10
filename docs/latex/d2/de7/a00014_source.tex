@@ -1,0 +1,50 @@
+\doxysubsection{Puerto\+Serie.\+h}
+\label{a00014_source}\index{PuertoSerie.h@{PuertoSerie.h}}
+\textbf{ Ir a la documentación de este archivo.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Nombre\ del\ fichero:\ PuertoSerie.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Descripción:\ Definición\ de\ la\ clase\ PuertoSerie\ para\ la\ comunicación\ a\ través\ del\ puerto\ serie.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Autores:\ Carla\ Rumeu\ Montesinos\ y\ Elena\ Ruiz\ de\ la\ Blanca}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Fecha:\ 30\ de\ septiembre\ de\ 2024}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ Este\ archivo\ ha\ sido\ realizado\ por\ Carla\ Rumeu\ Montesinos\ y\ Elena\ Ruiz\ de\ la\ Blanca\ el\ 30\ de\ septiembre\ de\ 2024.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ Contiene\ la\ implementación\ de\ la\ clase\ PuertoSerie,\ que\ simplifica\ la\ inicialización\ y\ la\ escritura\ en\ el\ puerto\ serie}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ de\ un\ microcontrolador\ como\ un\ Arduino.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ Todos\ los\ derechos\ reservados.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ PUERTO\_SERIE\_H\_INCLUIDO}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ PUERTO\_SERIE\_H\_INCLUIDO}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }PuertoSerie\ \ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ PuertoSerie\ (\textcolor{keywordtype}{long}\ baudios)\ \{}
+\DoxyCodeLine{00034\ \ \ Serial.begin(\ baudios\ );}
+\DoxyCodeLine{00035\ \ \ \textcolor{comment}{//\ mejor\ no\ poner\ esto\ aquí:\ while\ (\ !Serial\ )\ delay(10);\ \ \ }}
+\DoxyCodeLine{00036\ \ \ \}\ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ esperarDisponible()\ \{}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordflow}{while}\ (\ !Serial\ )\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ delay(10);\ \ \ }
+\DoxyCodeLine{00048\ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \}\ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ escribir\ (T\ mensaje)\ \{}
+\DoxyCodeLine{00063\ \ \ Serial.print(\ mensaje\ );}
+\DoxyCodeLine{00064\ \ \ \}\ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00065\ \ \ }
+\DoxyCodeLine{00066\ \};\ \textcolor{comment}{//\ class\ PuertoSerie}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

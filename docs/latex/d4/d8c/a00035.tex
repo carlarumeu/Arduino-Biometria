@@ -1,0 +1,205 @@
+\doxysubsection{Referencia de la clase Publicador}
+\label{a00035}\index{Publicador@{Publicador}}
+
+
+{\ttfamily \#include $<$Publicador.\+h$>$}
+
+
+
+Diagrama de colaboración de Publicador\+:
+% FIG 0
+\doxysubsubsubsection*{Tipos públicos}
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ Mediciones\+ID} \{ \textbf{ CO2} = 11
+, \textbf{ TEMPERATURA} = 12
+, \textbf{ RUIDO} = 13
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Publicador} ()
+\item 
+void \textbf{ encender\+Emisora} ()
+\item 
+void \textbf{ publicar\+CO2} (double valor\+CO2, uint8\+\_\+t contador, long tiempo\+Espera)
+\item 
+void \textbf{ publicar\+Temperatura} (int16\+\_\+t valor\+Temperatura, uint8\+\_\+t contador, long tiempo\+Espera)
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Emisora\+BLE} \textbf{ la\+Emisora}
+\begin{DoxyCompactList}\small\item\em Nombre de la emisora. \end{DoxyCompactList}\item 
+const int \textbf{ RSSI} = -\/53
+\begin{DoxyCompactList}\small\item\em Valor RSSI (Received Signal Strength Indicator). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Descripción detallada}
+\DoxyHorRuler{0}
+ Clase \doxyref{Publicador}{pág.}{d4/d8c/a00035} para emitir anuncios de datos ambientales.
+
+Esta clase permite publicar datos como niveles de CO2 y \doxysubsubsubsection{temperatura utilizando una emisora BLE (Bluetooth Low Energy).}\label{a00035_autotoc_md4}
+
+
+Definición en la línea \textbf{ 23} del archivo \textbf{ Publicador.\+h}.
+
+
+
+\doxysubsubsection{Documentación de las enumeraciones miembro de la clase}
+\index{Publicador@{Publicador}!MedicionesID@{MedicionesID}}
+\index{MedicionesID@{MedicionesID}!Publicador@{Publicador}}
+\doxyparagraph{MedicionesID}
+{\footnotesize\ttfamily \label{a00035_a0dbad8398e97eaf1d6ecdd854f286d38_a0dbad8398e97eaf1d6ecdd854f286d38} 
+enum \textbf{ Publicador\+::\+Mediciones\+ID}}
+
+\DoxyHorRuler{0}
+ Enumeración para las ID de las mediciones.\doxysubsubsubsection{Incluye identificadores para CO2, temperatura y ruido.}\label{a00035_a0dbad8398e97eaf1d6ecdd854f286d38_autotoc_md5}
+\begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CO2@{CO2}!Publicador@{Publicador}}\index{Publicador@{Publicador}!CO2@{CO2}}}\label{a00035_a0dbad8398e97eaf1d6ecdd854f286d38_a0dbad8398e97eaf1d6ecdd854f286d38} 
+CO2&ID para la medición de CO2. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEMPERATURA@{TEMPERATURA}!Publicador@{Publicador}}\index{Publicador@{Publicador}!TEMPERATURA@{TEMPERATURA}}}\label{a00035_a0dbad8398e97eaf1d6ecdd854f286d38_a0dbad8398e97eaf1d6ecdd854f286d38} 
+TEMPERATURA&ID para la medición de temperatura. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RUIDO@{RUIDO}!Publicador@{Publicador}}\index{Publicador@{Publicador}!RUIDO@{RUIDO}}}\label{a00035_a0dbad8398e97eaf1d6ecdd854f286d38_a0dbad8398e97eaf1d6ecdd854f286d38} 
+RUIDO&ID para la medición de ruido. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definición en la línea \textbf{ 51} del archivo \textbf{ Publicador.\+h}.
+
+
+
+\doxysubsubsection{Documentación de constructores y destructores}
+\index{Publicador@{Publicador}!Publicador@{Publicador}}
+\index{Publicador@{Publicador}!Publicador@{Publicador}}
+\doxyparagraph{Publicador()}
+{\footnotesize\ttfamily \label{a00035_aa6e6635cf76f5be0d84b8e7780156151_aa6e6635cf76f5be0d84b8e7780156151} 
+Publicador\+::\+Publicador (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\DoxyHorRuler{0}
+ Constructor de la clase \doxyref{Publicador}{pág.}{d4/d8c/a00035}.
+
+ATENCIÓN\+: no encender la emisora en el constructor. \doxysubsubsubsection{Se debe llamar a encender\+Emisora() desde el método setup() más tarde.}\label{a00035_aa6e6635cf76f5be0d84b8e7780156151_autotoc_md6}
+
+
+Definición en la línea \textbf{ 64} del archivo \textbf{ Publicador.\+h}.
+
+
+
+\doxysubsubsection{Documentación de funciones miembro}
+\index{Publicador@{Publicador}!encenderEmisora@{encenderEmisora}}
+\index{encenderEmisora@{encenderEmisora}!Publicador@{Publicador}}
+\doxyparagraph{encenderEmisora()}
+{\footnotesize\ttfamily \label{a00035_a10f309e5dfd232d204c5d2952581fe16_a10f309e5dfd232d204c5d2952581fe16} 
+void Publicador\+::encender\+Emisora (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definición en la línea \textbf{ 71} del archivo \textbf{ Publicador.\+h}.
+
+\index{Publicador@{Publicador}!publicarCO2@{publicarCO2}}
+\index{publicarCO2@{publicarCO2}!Publicador@{Publicador}}
+\doxyparagraph{publicarCO2()}
+{\footnotesize\ttfamily \label{a00035_ade55a9309bb13cd76316db8ece597d7d_ade55a9309bb13cd76316db8ece597d7d} 
+void Publicador\+::publicar\+CO2 (\begin{DoxyParamCaption}\item[{double}]{valor\+CO2}{, }\item[{uint8\+\_\+t}]{contador}{, }\item[{long}]{tiempo\+Espera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\DoxyHorRuler{0}
+ Publica el nivel de CO2.
+
+Emite un anuncio IBeacon con el valor de CO2.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em valor\+CO2} & El valor de CO2 a publicar. \\
+\hline
+{\em contador} & Un contador que se puede utilizar para el seguimiento. \\
+\hline
+{\em tiempo\+Espera} & El tiempo en milisegundos a esperar \\
+\hline
+\end{DoxyParams}
+\doxysubsubsubsection{antes de detener el anuncio.}\label{a00035_ade55a9309bb13cd76316db8ece597d7d_autotoc_md7}
+
+
+Definición en la línea \textbf{ 85} del archivo \textbf{ Publicador.\+h}.
+
+Gráfico de llamadas de esta función\+:
+% FIG 1
+\index{Publicador@{Publicador}!publicarTemperatura@{publicarTemperatura}}
+\index{publicarTemperatura@{publicarTemperatura}!Publicador@{Publicador}}
+\doxyparagraph{publicarTemperatura()}
+{\footnotesize\ttfamily \label{a00035_a674ec7d8321b9792835cd935c6196dec_a674ec7d8321b9792835cd935c6196dec} 
+void Publicador\+::publicar\+Temperatura (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{valor\+Temperatura}{, }\item[{uint8\+\_\+t}]{contador}{, }\item[{long}]{tiempo\+Espera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\DoxyHorRuler{0}
+ Publica la temperatura.
+
+Emite un anuncio IBeacon con el valor de temperatura.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em valor\+Temperatura} & El valor de temperatura a publicar. \\
+\hline
+{\em contador} & Un contador que se puede utilizar para el seguimiento. \\
+\hline
+{\em tiempo\+Espera} & El tiempo en milisegundos a esperar \\
+\hline
+\end{DoxyParams}
+\doxysubsubsubsection{antes de detener el anuncio.}\label{a00035_a674ec7d8321b9792835cd935c6196dec_autotoc_md8}
+
+
+Definición en la línea \textbf{ 124} del archivo \textbf{ Publicador.\+h}.
+
+Gráfico de llamadas de esta función\+:
+% FIG 2
+
+
+\doxysubsubsection{Documentación de datos miembro}
+\index{Publicador@{Publicador}!laEmisora@{laEmisora}}
+\index{laEmisora@{laEmisora}!Publicador@{Publicador}}
+\doxyparagraph{laEmisora}
+{\footnotesize\ttfamily \label{a00035_a86ef036c1b64668ac54dfe87b595aec5_a86ef036c1b64668ac54dfe87b595aec5} 
+\textbf{ Emisora\+BLE} Publicador\+::la\+Emisora}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}yesyes"{}},}
+\DoxyCodeLine{\ \ \ \ 0x004c,}
+\DoxyCodeLine{\ \ \ \ 4}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Nombre de la emisora. 
+
+Identificación del fabricante (Apple). Potencia de transmisión (tx\+Power). 
+
+Definición en la línea \textbf{ 34} del archivo \textbf{ Publicador.\+h}.
+
+\index{Publicador@{Publicador}!RSSI@{RSSI}}
+\index{RSSI@{RSSI}!Publicador@{Publicador}}
+\doxyparagraph{RSSI}
+{\footnotesize\ttfamily \label{a00035_a339fb2ba061a53478572ade00866408c_a339fb2ba061a53478572ade00866408c} 
+const int Publicador\+::\+RSSI = -\/53}
+
+
+
+Valor RSSI (Received Signal Strength Indicator). 
+
+
+
+Definición en la línea \textbf{ 40} del archivo \textbf{ Publicador.\+h}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Publicador.\+h}\end{DoxyCompactItemize}

@@ -1,10 +1,10 @@
 /*
  * Nombre del fichero: Emisora.h
  * Descripción: Definición de la clase EmisoraBLE para gestionar la emisora Bluetooth de tipo BLE.
- * Autores: Carla Rumeu Montesinos y Elena Ruiz de la Blanca
+ * Autores: Álex Escrivá Caravaca, Elena Ruiz de la Blanca y Carla Rumeu Montesinos.
  * Fecha: 3o de septiembre de 2024
  *
- * Este archivo ha sido realizado por Carla Rumeu Montesinos y Elena Ruiz de la Blanca el 30 de septiembre de 2024.
+ * Este archivo ha sido realizado por Álex Escrivá Caravaca, Elena Ruiz de la Blanca y Carla Rumeu Montesinos el 30 de septiembre de 2024.
  * Contiene la implementación de la clase EmisoraBLE, que permite la configuración del nombre, 
  * el ID del fabricante y la potencia de transmisión de una emisora BLE.
  */

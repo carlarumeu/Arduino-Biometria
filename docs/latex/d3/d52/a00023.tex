@@ -1,0 +1,448 @@
+\doxysubsection{Referencia de la clase Emisora\+BLE}
+\label{a00023}\index{EmisoraBLE@{EmisoraBLE}}
+
+
+Clase para gestionar la emisora Bluetooth de tipo BLE (Bluetooth Low Energy).  
+
+
+
+
+{\ttfamily \#include $<$Emisora\+BLE.\+h$>$}
+
+
+
+Diagrama de colaboración de Emisora\+BLE\+:
+% FIG 0
+\doxysubsubsubsection*{Tipos públicos}
+\begin{DoxyCompactItemize}
+\item 
+using \textbf{ Callback\+Conexion\+Establecida} = void ( uint16\+\_\+t conn\+Handle )
+\begin{DoxyCompactList}\small\item\em Tipo de callback para conexión establecida. \end{DoxyCompactList}\item 
+using \textbf{ Callback\+Conexion\+Terminada} = void ( uint16\+\_\+t conn\+Handle, uint8\+\_\+t reason)
+\begin{DoxyCompactList}\small\item\em Tipo de callback para conexión terminada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Emisora\+BLE} (const char $\ast$nombre\+Emisora\+\_\+, const uint16\+\_\+t fabricante\+ID\+\_\+, const int8\+\_\+t tx\+Power\+\_\+)
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \doxyref{Emisora\+BLE}{pág.}{d3/d52/a00023}. \end{DoxyCompactList}\item 
+void \textbf{ encender\+Emisora} ()
+\begin{DoxyCompactList}\small\item\em Enciende la emisora BLE. \end{DoxyCompactList}\item 
+void \textbf{ encender\+Emisora} (\textbf{ Callback\+Conexion\+Establecida} cbce, \textbf{ Callback\+Conexion\+Terminada} cbct)
+\begin{DoxyCompactList}\small\item\em Enciende la emisora y establece callbacks. \end{DoxyCompactList}\item 
+void \textbf{ detener\+Anuncio} ()
+\begin{DoxyCompactList}\small\item\em Detiene la emisión de anuncios. \end{DoxyCompactList}\item 
+bool \textbf{ esta\+Anunciando} ()
+\begin{DoxyCompactList}\small\item\em Verifica si la emisora está anunciando. \end{DoxyCompactList}\item 
+void \textbf{ emitir\+Anuncio\+IBeacon} (uint8\+\_\+t $\ast$beacon\+UUID, int16\+\_\+t major, int16\+\_\+t minor, uint8\+\_\+t rssi)
+\begin{DoxyCompactList}\small\item\em Emite un anuncio de tipo i\+Beacon. \end{DoxyCompactList}\item 
+void \textbf{ emitir\+Anuncio\+IBeacon\+Libre} (const char $\ast$carga, const uint8\+\_\+t tamanyo\+Carga)
+\begin{DoxyCompactList}\small\item\em Emite un anuncio de tipo i\+Beacon con carga libre. \end{DoxyCompactList}\item 
+bool \textbf{ anyadir\+Servicio} (\textbf{ Servicio\+En\+Emisora} \&servicio)
+\begin{DoxyCompactList}\small\item\em Añade un servicio a la emisora. \end{DoxyCompactList}\item 
+bool \textbf{ anyadir\+Servicio\+Con\+Sus\+Caracteristicas} (\textbf{ Servicio\+En\+Emisora} \&servicio)
+\begin{DoxyCompactList}\small\item\em Añade un servicio y sus características a la emisora. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename ... T$>$ }\\bool \textbf{ anyadir\+Servicio\+Con\+Sus\+Caracteristicas} (\textbf{ Servicio\+En\+Emisora} \&servicio, \textbf{ Servicio\+En\+Emisora\+::\+Caracteristica} \&caracteristica, T \&... resto\+Caracteristicas)
+\begin{DoxyCompactList}\small\item\em Añade un servicio y múltiples características a la emisora. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename ... T$>$ }\\bool \textbf{ anyadir\+Servicio\+Con\+Sus\+Caracteristicas\+YActivar} (\textbf{ Servicio\+En\+Emisora} \&servicio, T \&... resto\+Caracteristicas)
+\begin{DoxyCompactList}\small\item\em Añade un servicio con sus características y lo activa. \end{DoxyCompactList}\item 
+void \textbf{ instalar\+Callback\+Conexion\+Establecida} (\textbf{ Callback\+Conexion\+Establecida} cb)
+\begin{DoxyCompactList}\small\item\em Instala un callback para la conexión establecida. \end{DoxyCompactList}\item 
+void \textbf{ instalar\+Callback\+Conexion\+Terminada} (\textbf{ Callback\+Conexion\+Terminada} cb)
+\begin{DoxyCompactList}\small\item\em Instala un callback para la conexión terminada. \end{DoxyCompactList}\item 
+BLEConnection $\ast$ \textbf{ get\+Conexion} (uint16\+\_\+t conn\+Handle)
+\begin{DoxyCompactList}\small\item\em Obtiene la conexión correspondiente a un identificador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Descripción detallada}
+Clase para gestionar la emisora Bluetooth de tipo BLE (Bluetooth Low Energy). 
+
+Esta clase encapsula las funcionalidades de la emisora BLE, permitiendo la configuración del nombre, el ID del fabricante y la potencia de transmisión. Además, permite iniciar la emisión de anuncios y gestionar conexiones.\doxysubsubsection{Diseño}\label{a00023_diseño}
+Esta clase utiliza la biblioteca Bluefruit para interactuar con el hardware BLE. Implementa métodos para encender la emisora, emitir anuncios i\+Beacon y gestionar servicios y características asociadas.\doxysubsubsection{Ejemplo de uso}\label{a00023_ejemplos}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{EmisoraBLE\ emisora(\textcolor{stringliteral}{"{}MiEmisora"{}},\ 0x4C00,\ 0xCA);}
+\DoxyCodeLine{emisora.encenderEmisora();}
+
+\end{DoxyCode}
+
+
+Clase para manejar una emisora BLE (Bluetooth Low Energy). 
+
+Definición en la línea \textbf{ 52} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+
+
+\doxysubsubsection{Documentación de los «\+Typedef» miembros de la clase}
+\index{EmisoraBLE@{EmisoraBLE}!CallbackConexionEstablecida@{CallbackConexionEstablecida}}
+\index{CallbackConexionEstablecida@{CallbackConexionEstablecida}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{CallbackConexionEstablecida}
+{\footnotesize\ttfamily \label{a00023_a922f7f1ab1063eb40c99e4a3676be258_a922f7f1ab1063eb40c99e4a3676be258} 
+using \textbf{ Emisora\+BLE\+::\+Callback\+Conexion\+Establecida} = void ( uint16\+\_\+t conn\+Handle )}
+
+
+
+Tipo de callback para conexión establecida. 
+
+
+
+Definición en la línea \textbf{ 62} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+\index{EmisoraBLE@{EmisoraBLE}!CallbackConexionTerminada@{CallbackConexionTerminada}}
+\index{CallbackConexionTerminada@{CallbackConexionTerminada}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{CallbackConexionTerminada}
+{\footnotesize\ttfamily \label{a00023_afd6faaf6a924a50ea027046703300b0b_afd6faaf6a924a50ea027046703300b0b} 
+using \textbf{ Emisora\+BLE\+::\+Callback\+Conexion\+Terminada} = void ( uint16\+\_\+t conn\+Handle, uint8\+\_\+t reason)}
+
+
+
+Tipo de callback para conexión terminada. 
+
+
+
+Definición en la línea \textbf{ 65} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+
+
+\doxysubsubsection{Documentación de constructores y destructores}
+\index{EmisoraBLE@{EmisoraBLE}!EmisoraBLE@{EmisoraBLE}}
+\index{EmisoraBLE@{EmisoraBLE}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{EmisoraBLE()}
+{\footnotesize\ttfamily \label{a00023_ae2e94b95bde4cddf0038deb0368cc5bf_ae2e94b95bde4cddf0038deb0368cc5bf} 
+Emisora\+BLE\+::\+Emisora\+BLE (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nombre\+Emisora\+\_\+}{, }\item[{const uint16\+\_\+t}]{fabricante\+ID\+\_\+}{, }\item[{const int8\+\_\+t}]{tx\+Power\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor de la clase \doxyref{Emisora\+BLE}{pág.}{d3/d52/a00023}. 
+
+Este constructor inicializa los parámetros de la emisora.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em nombre\+Emisora\+\_\+} & Nombre de la emisora. \\
+\hline
+{\em fabricante\+ID\+\_\+} & ID del fabricante. \\
+\hline
+{\em tx\+Power\+\_\+} & Potencia de transmisión. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \textbf{ 79} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+
+
+\doxysubsubsection{Documentación de funciones miembro}
+\index{EmisoraBLE@{EmisoraBLE}!anyadirServicio@{anyadirServicio}}
+\index{anyadirServicio@{anyadirServicio}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{anyadirServicio()}
+{\footnotesize\ttfamily \label{a00023_a0f027a1c447357c5fe79200b36451731_a0f027a1c447357c5fe79200b36451731} 
+bool Emisora\+BLE\+::anyadir\+Servicio (\begin{DoxyParamCaption}\item[{\textbf{ Servicio\+En\+Emisora} \&}]{servicio}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Añade un servicio a la emisora. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em servicio} & Referencia al servicio a añadir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si se añadió correctamente, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 357} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+\index{EmisoraBLE@{EmisoraBLE}!anyadirServicioConSusCaracteristicas@{anyadirServicioConSusCaracteristicas}}
+\index{anyadirServicioConSusCaracteristicas@{anyadirServicioConSusCaracteristicas}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{anyadirServicioConSusCaracteristicas()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{a00023_a074a16066fc8ae37567a342e3df63bf5_a074a16066fc8ae37567a342e3df63bf5} 
+bool Emisora\+BLE\+::anyadir\+Servicio\+Con\+Sus\+Caracteristicas (\begin{DoxyParamCaption}\item[{\textbf{ Servicio\+En\+Emisora} \&}]{servicio}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Añade un servicio y sus características a la emisora. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em servicio} & Referencia al servicio a añadir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si se añadió correctamente, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 382} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+Gráfico de llamadas a esta función\+:
+% FIG 1
+\index{EmisoraBLE@{EmisoraBLE}!anyadirServicioConSusCaracteristicas@{anyadirServicioConSusCaracteristicas}}
+\index{anyadirServicioConSusCaracteristicas@{anyadirServicioConSusCaracteristicas}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{anyadirServicioConSusCaracteristicas()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{a00023_aa589659b63ae877910eab1b39a93a339_aa589659b63ae877910eab1b39a93a339} 
+template$<$typename ... T$>$ \\
+bool Emisora\+BLE\+::anyadir\+Servicio\+Con\+Sus\+Caracteristicas (\begin{DoxyParamCaption}\item[{\textbf{ Servicio\+En\+Emisora} \&}]{servicio}{, }\item[{\textbf{ Servicio\+En\+Emisora\+::\+Caracteristica} \&}]{caracteristica}{, }\item[{T \&...}]{resto\+Caracteristicas}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Añade un servicio y múltiples características a la emisora. 
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Parámetros de tipo variable para características. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parámetros}
+{\em servicio} & Referencia al servicio a añadir. \\
+\hline
+{\em caracteristica} & Referencia a la característica a añadir. \\
+\hline
+{\em resto\+Caracteristicas} & Referencias a las características adicionales. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true si se añadieron correctamente, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 399} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+Gráfico de llamadas de esta función\+:
+% FIG 2
+\index{EmisoraBLE@{EmisoraBLE}!anyadirServicioConSusCaracteristicasYActivar@{anyadirServicioConSusCaracteristicasYActivar}}
+\index{anyadirServicioConSusCaracteristicasYActivar@{anyadirServicioConSusCaracteristicasYActivar}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{anyadirServicioConSusCaracteristicasYActivar()}
+{\footnotesize\ttfamily \label{a00023_a0a0673823174ce9ffb96fb1c0dfb11ab_a0a0673823174ce9ffb96fb1c0dfb11ab} 
+template$<$typename ... T$>$ \\
+bool Emisora\+BLE\+::anyadir\+Servicio\+Con\+Sus\+Caracteristicas\+YActivar (\begin{DoxyParamCaption}\item[{\textbf{ Servicio\+En\+Emisora} \&}]{servicio}{, }\item[{T \&...}]{resto\+Caracteristicas}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Añade un servicio con sus características y lo activa. 
+
+Esta función permite añadir un servicio especificando sus características y lo activa una vez añadido. 
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipos de las características a añadir. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parámetros}
+{\em servicio} & Referencia al servicio que se va a añadir. \\
+\hline
+{\em resto\+Caracteristicas} & Referencia a las características adicionales a añadir al servicio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Devuelve true si el servicio se añadió correctamente, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 422} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+Gráfico de llamadas de esta función\+:
+% FIG 3
+\index{EmisoraBLE@{EmisoraBLE}!detenerAnuncio@{detenerAnuncio}}
+\index{detenerAnuncio@{detenerAnuncio}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{detenerAnuncio()}
+{\footnotesize\ttfamily \label{a00023_aeede390b7a6502baecb48e9db77120b4_aeede390b7a6502baecb48e9db77120b4} 
+void Emisora\+BLE\+::detener\+Anuncio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Detiene la emisión de anuncios. 
+
+Si la emisora está actualmente anunciando, se detiene el anuncio. \begin{DoxyReturn}{Devuelve}
+void 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 155} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+\index{EmisoraBLE@{EmisoraBLE}!emitirAnuncioIBeacon@{emitirAnuncioIBeacon}}
+\index{emitirAnuncioIBeacon@{emitirAnuncioIBeacon}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{emitirAnuncioIBeacon()}
+{\footnotesize\ttfamily \label{a00023_aff23b85351177e685353b1ee92a1558f_aff23b85351177e685353b1ee92a1558f} 
+void Emisora\+BLE\+::emitir\+Anuncio\+IBeacon (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{beacon\+UUID}{, }\item[{int16\+\_\+t}]{major}{, }\item[{int16\+\_\+t}]{minor}{, }\item[{uint8\+\_\+t}]{rssi}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Emite un anuncio de tipo i\+Beacon. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em beacon\+UUID} & Puntero al UUID del beacon. \\
+\hline
+{\em major} & Número mayor del beacon. \\
+\hline
+{\em minor} & Número menor del beacon. \\
+\hline
+{\em rssi} & Potencia de la señal recibida. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+void 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 188} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+\index{EmisoraBLE@{EmisoraBLE}!emitirAnuncioIBeaconLibre@{emitirAnuncioIBeaconLibre}}
+\index{emitirAnuncioIBeaconLibre@{emitirAnuncioIBeaconLibre}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{emitirAnuncioIBeaconLibre()}
+{\footnotesize\ttfamily \label{a00023_a8439d1e85ec8d630fcd33b01d8987d41_a8439d1e85ec8d630fcd33b01d8987d41} 
+void Emisora\+BLE\+::emitir\+Anuncio\+IBeacon\+Libre (\begin{DoxyParamCaption}\item[{const char $\ast$}]{carga}{, }\item[{const uint8\+\_\+t}]{tamanyo\+Carga}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Emite un anuncio de tipo i\+Beacon con carga libre. 
+
+Permite enviar una carga personalizada como parte del anuncio i\+Beacon.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em carga} & Puntero a la carga a enviar. \\
+\hline
+{\em tamanyo\+Carga} & Tamaño de la carga a enviar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+void 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 290} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+\index{EmisoraBLE@{EmisoraBLE}!encenderEmisora@{encenderEmisora}}
+\index{encenderEmisora@{encenderEmisora}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{encenderEmisora()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{a00023_a31f9c768b91b9e353f693f509af3ea73_a31f9c768b91b9e353f693f509af3ea73} 
+void Emisora\+BLE\+::encender\+Emisora (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Enciende la emisora BLE. 
+
+Inicializa la emisora y detiene cualquier anuncio previo. \begin{DoxyReturn}{Devuelve}
+void 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 118} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+Gráfico de llamadas a esta función\+:
+% FIG 4
+\index{EmisoraBLE@{EmisoraBLE}!encenderEmisora@{encenderEmisora}}
+\index{encenderEmisora@{encenderEmisora}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{encenderEmisora()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{a00023_ada243f2f1185a7d66ea33de6bdb06590_ada243f2f1185a7d66ea33de6bdb06590} 
+void Emisora\+BLE\+::encender\+Emisora (\begin{DoxyParamCaption}\item[{\textbf{ Callback\+Conexion\+Establecida}}]{cbce}{, }\item[{\textbf{ Callback\+Conexion\+Terminada}}]{cbct}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Enciende la emisora y establece callbacks. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cbce} & Callback que se ejecuta cuando se establece una conexión. \\
+\hline
+{\em cbct} & Callback que se ejecuta cuando se termina una conexión. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+void 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 136} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+Gráfico de llamadas de esta función\+:
+% FIG 5
+\index{EmisoraBLE@{EmisoraBLE}!estaAnunciando@{estaAnunciando}}
+\index{estaAnunciando@{estaAnunciando}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{estaAnunciando()}
+{\footnotesize\ttfamily \label{a00023_ac32548698cf69ecef9e96941fc2e1b94_ac32548698cf69ecef9e96941fc2e1b94} 
+bool Emisora\+BLE\+::esta\+Anunciando (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Verifica si la emisora está anunciando. 
+
+\begin{DoxyReturn}{Devuelve}
+true si está anunciando, false en caso contrario. 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 172} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+\index{EmisoraBLE@{EmisoraBLE}!getConexion@{getConexion}}
+\index{getConexion@{getConexion}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{getConexion()}
+{\footnotesize\ttfamily \label{a00023_aa863c5f29e1f0d4dd1ae023b30350960_aa863c5f29e1f0d4dd1ae023b30350960} 
+BLEConnection $\ast$ Emisora\+BLE\+::get\+Conexion (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{conn\+Handle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene la conexión correspondiente a un identificador. 
+
+Esta función permite obtener un puntero a la conexión utilizando el manejador de conexión especificado. 
+\begin{DoxyParams}{Parámetros}
+{\em cb} & conn\+Handle Manejador de conexión del cual se quiere obtener la conexión. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Puntero a la conexión correspondiente. 
+\end{DoxyReturn}
+
+
+Definición en la línea \textbf{ 470} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+\index{EmisoraBLE@{EmisoraBLE}!instalarCallbackConexionEstablecida@{instalarCallbackConexionEstablecida}}
+\index{instalarCallbackConexionEstablecida@{instalarCallbackConexionEstablecida}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{instalarCallbackConexionEstablecida()}
+{\footnotesize\ttfamily \label{a00023_ae15e223776af83a8cac07564c168d0b9_ae15e223776af83a8cac07564c168d0b9} 
+void Emisora\+BLE\+::instalar\+Callback\+Conexion\+Establecida (\begin{DoxyParamCaption}\item[{\textbf{ Callback\+Conexion\+Establecida}}]{cb}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Instala un callback para la conexión establecida. 
+
+Esta función permite establecer un callback que se llamará cuando se establezca una conexión. 
+\begin{DoxyParams}{Parámetros}
+{\em cb} & Callback que se invocará al establecer la conexión. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \textbf{ 443} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+Gráfico de llamadas a esta función\+:
+% FIG 6
+\index{EmisoraBLE@{EmisoraBLE}!instalarCallbackConexionTerminada@{instalarCallbackConexionTerminada}}
+\index{instalarCallbackConexionTerminada@{instalarCallbackConexionTerminada}!EmisoraBLE@{EmisoraBLE}}
+\doxyparagraph{instalarCallbackConexionTerminada()}
+{\footnotesize\ttfamily \label{a00023_a2bb6b319046a10641619c1388f7fe351_a2bb6b319046a10641619c1388f7fe351} 
+void Emisora\+BLE\+::instalar\+Callback\+Conexion\+Terminada (\begin{DoxyParamCaption}\item[{\textbf{ Callback\+Conexion\+Terminada}}]{cb}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Instala un callback para la conexión terminada. 
+
+Esta función permite establecer un callback que se llamará cuando se termine una conexión. 
+\begin{DoxyParams}{Parámetros}
+{\em cb} & Callback que se invocará al terminar la conexión. \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea \textbf{ 456} del archivo \textbf{ Emisora\+BLE.\+h}.
+
+Gráfico de llamadas a esta función\+:
+% FIG 7
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Emisora\+BLE.\+h}\end{DoxyCompactItemize}

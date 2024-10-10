@@ -1,10 +1,10 @@
 /*
  * Nombre del fichero: PuertoSerie.h
  * Descripción: Definición de la clase PuertoSerie para la comunicación a través del puerto serie.
- * Autores: Carla Rumeu Montesinos y Elena Ruiz de la Blanca
+ * Autores: Álex Escrivá Caravaca, Elena Ruiz de la Blanca y Carla Rumeu Montesinos.
  * Fecha: 30 de septiembre de 2024
  *
- * Este archivo ha sido realizado por Carla Rumeu Montesinos y Elena Ruiz de la Blanca el 30 de septiembre de 2024.
+ * Este archivo ha sido realizado por Álex Escrivá Caravaca, Elena Ruiz de la Blanca y Carla Rumeu Montesinos el 30 de septiembre de 2024.
  * Contiene la implementación de la clase PuertoSerie, que simplifica la inicialización y la escritura en el puerto serie
  * de un microcontrolador como un Arduino.
  * 

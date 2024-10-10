@@ -1,0 +1,192 @@
+\doxysubsection{Servicio\+En\+Emisora.\+h}
+\label{a00017_source}\index{ServicioEnEmisora.h@{ServicioEnEmisora.h}}
+\textbf{ Ir a la documentación de este archivo.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Nombre\ del\ fichero:\ ServicioEnEmisora.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Descripción:\ Definición\ de\ una\ clase\ para\ gestionar\ servicios\ y\ características\ en\ una\ emisora\ BLE.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Autores:\ Carla\ Rumeu\ Montesinos\ y\ Elena\ Ruiz\ de\ la\ Blanca}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Fecha:\ 30\ de\ septiembre\ de\ 2024}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ Este\ archivo\ ha\ sido\ realizado\ por\ Carla\ Rumeu\ Montesinos\ y\ Elena\ Ruiz\ de\ la\ Blanca\ el\ 30\ de\ septiembre\ de\ 2024.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ Contiene\ la\ implementación\ de\ la\ clase\ ServicioEnEmisora,\ que\ permite\ la\ configuración,\ activación\ y\ manejo\ de\ servicios}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ BLE,\ así\ como\ la\ gestión\ de\ características\ con\ permisos\ y\ propiedades.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ Todos\ los\ derechos\ reservados.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ SERVICIO\_EMISORA\_H\_INCLUIDO}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ SERVICIO\_EMISORA\_H\_INCLUIDO}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ Incluir\ la\ biblioteca\ para\ trabajar\ con\ vectores}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{template}<\ \textcolor{keyword}{typename}\ T\ >}
+\DoxyCodeLine{00033\ T*\ alReves(T*\ p,\ \textcolor{keywordtype}{int}\ n)\ \{}
+\DoxyCodeLine{00034\ \ \ T\ aux;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n\ /\ 2;\ i++)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ aux\ =\ p[i];}
+\DoxyCodeLine{00038\ \ \ \ \ p[i]\ =\ p[n\ -\/\ i\ -\/\ 1];}
+\DoxyCodeLine{00039\ \ \ \ \ p[n\ -\/\ i\ -\/\ 1]\ =\ aux;}
+\DoxyCodeLine{00040\ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00042\ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00054\ uint8\_t*\ stringAUint8AlReves(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pString,\ uint8\_t*\ pUint,\ \textcolor{keywordtype}{int}\ tamMax)\ \{}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{int}\ longitudString\ =\ strlen(pString);}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{int}\ longitudCopiar\ =\ (longitudString\ >\ tamMax\ ?\ tamMax\ :\ longitudString);}
+\DoxyCodeLine{00058\ \ \ \textcolor{comment}{//\ copio\ nombreServicio\ -\/>\ uuidServicio\ pero\ al\ revés}}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <=\ longitudCopiar\ -\/\ 1;\ i++)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ pUint[tamMax\ -\/\ i\ -\/\ 1]\ =\ pString[i];}
+\DoxyCodeLine{00061\ \ \ \}\ \ \textcolor{comment}{//\ for}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordflow}{return}\ pUint;}
+\DoxyCodeLine{00064\ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{class\ }ServicioEnEmisora\ \{}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00077\ \ \ \textcolor{keyword}{using\ }CallbackCaracteristicaEscrita\ =\ void(uint16\_t\ conn\_handle,\ BLECharacteristic*\ chr,\ uint8\_t*\ data,\ uint16\_t\ len);}
+\DoxyCodeLine{00081\ \ \ \textcolor{keyword}{class\ }Caracteristica\ \{}
+\DoxyCodeLine{00082\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \ \ uint8\_t\ uuidCaracteristica[16]\ =\ \{\ \ \textcolor{comment}{//\ el\ uuid\ se\ copia\ aquí\ (al\ revés)\ a\ partir\ de\ un\ string-\/c}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \textcolor{comment}{//\ least\ signficant\ byte,\ el\ primero}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \textcolor{charliteral}{'0'},\ \textcolor{charliteral}{'1'},\ \textcolor{charliteral}{'2'},\ \textcolor{charliteral}{'3'},}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \textcolor{charliteral}{'4'},\ \textcolor{charliteral}{'5'},\ \textcolor{charliteral}{'6'},\ \textcolor{charliteral}{'7'},}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \textcolor{charliteral}{'8'},\ \textcolor{charliteral}{'9'},\ \textcolor{charliteral}{'A'},\ \textcolor{charliteral}{'B'},}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \textcolor{charliteral}{'C'},\ \textcolor{charliteral}{'D'},\ \textcolor{charliteral}{'E'},\ \textcolor{charliteral}{'F'}}
+\DoxyCodeLine{00089\ \ \ \ \ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ BLECharacteristic\ laCaracteristica;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00100\ \ \ \ \ Caracteristica(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nombreCaracteristica\_)\ :\ laCaracteristica(stringAUint8AlReves(nombreCaracteristica\_,\ \&uuidCaracteristica[0],\ 16))\ \{}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00113\ \ \ \ \ Caracteristica(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nombreCaracteristica\_,\ uint8\_t\ props,\ SecureMode\_t\ permisoRead,\ SecureMode\_t\ permisoWrite,\ uint8\_t\ tam):\ Caracteristica(nombreCaracteristica\_)\ \ \textcolor{comment}{//\ llamada\ al\ otro\ constructor}}
+\DoxyCodeLine{00114\ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ (*this).asignarPropiedadesPermisosYTamanyoDatos(props,\ permisoRead,\ permisoWrite,\ tam);}
+\DoxyCodeLine{00116\ \ \ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ asignarPropiedades(uint8\_t\ props)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \textcolor{comment}{//\ no\ puedo\ escribir\ AUN\ si\ el\ constructor\ llama\ a\ esto:\ Serial.println(\ "{}\ laCaracteristica.setProperties(\ props\ );\ "{});}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ (*this).laCaracteristica.setProperties(props);}
+\DoxyCodeLine{00127\ \ \ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ asignarPermisos(SecureMode\_t\ permisoRead,\ SecureMode\_t\ permisoWrite)\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \textcolor{comment}{//\ no\ puedo\ escribir\ AUN\ si\ el\ constructor\ llama\ a\ esto:\ Serial.println(\ "{}laCaracteristica.setPermission(\ permisoRead,\ permisoWrite\ );\ "{}\ );}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ (*this).laCaracteristica.setPermission(permisoRead,\ permisoWrite);}
+\DoxyCodeLine{00138\ \ \ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ asignarTamanyoDatos(uint8\_t\ tam)\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \textcolor{comment}{//\ no\ puedo\ escribir\ AUN\ si\ el\ constructor\ llama\ a\ esto:\ Serial.print(\ "{}\ (*this).laCaracteristica.setFixedLen(\ tam\ =\ "{}\ );}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \textcolor{comment}{//\ no\ puedo\ escribir\ AUN\ si\ el\ constructor\ llama\ a\ esto:\ Serial.println(\ tam\ );}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \textcolor{comment}{//\ (*this).laCaracteristica.setFixedLen(\ tam\ );}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ (*this).laCaracteristica.setMaxLen(tam);}
+\DoxyCodeLine{00150\ \ \ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ asignarPropiedadesPermisosYTamanyoDatos(uint8\_t\ props,\ SecureMode\_t\ permisoRead,\ SecureMode\_t\ permisoWrite,\ uint8\_t\ tam)\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ asignarPropiedades(props);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ asignarPermisos(permisoRead,\ permisoWrite);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ asignarTamanyoDatos(tam);}
+\DoxyCodeLine{00165\ \ \ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00173\ \ \ \ \ uint16\_t\ escribirDatos(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str)\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \textcolor{comment}{//\ Serial.print(\ "{}\ return\ (*this).laCaracteristica.write(\ str\ \ =\ "{}\ );}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \textcolor{comment}{//\ Serial.println(\ str\ );}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ uint16\_t\ r\ =\ (*this).laCaracteristica.write(str);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \textcolor{comment}{//\ Serial.print(\ "{}>>>Escritos\ "{}\ );\ Serial.print(\ r\ );\ Serial.println(\ "{}\ bytes\ con\ write()\ "{}\ );}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00189\ \ \ \ \ uint16\_t\ notificarDatos(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str)\ \{}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ uint16\_t\ r\ =\ laCaracteristica.notify(\&str[0]);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00194\ \ \ \ \ \}\ \ \textcolor{comment}{//\ \ ()}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordtype}{void}\ instalarCallbackCaracteristicaEscrita(CallbackCaracteristicaEscrita\ cb)\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ (*this).laCaracteristica.setWriteCallback(cb);}
+\DoxyCodeLine{00203\ \ \ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{void}\ activar()\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ err\_t\ error\ =\ (*this).laCaracteristica.begin();}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ Globales::elPuerto.escribir(\textcolor{stringliteral}{"{}\ (*this).laCaracteristica.begin();\ error\ =\ "{}});}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ Globales::elPuerto.escribir(error);}
+\DoxyCodeLine{00212\ \ \ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \};\ \ \textcolor{comment}{//\ class\ Caracteristica}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00217\ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00218\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ uint8\_t\ uuidServicio[16]\ =\ \{\ \ \textcolor{comment}{//\ el\ uuid\ se\ copia\ aquí\ (al\ revés)\ a\ partir\ de\ un\ string-\/c}}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{comment}{//\ least\ signficant\ byte,\ el\ primero}}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{charliteral}{'0'},\ \textcolor{charliteral}{'1'},\ \textcolor{charliteral}{'2'},\ \textcolor{charliteral}{'3'},}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{charliteral}{'4'},\ \textcolor{charliteral}{'5'},\ \textcolor{charliteral}{'6'},\ \textcolor{charliteral}{'7'},}
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{charliteral}{'8'},\ \textcolor{charliteral}{'9'},\ \textcolor{charliteral}{'A'},\ \textcolor{charliteral}{'B'},}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{charliteral}{'C'},\ \textcolor{charliteral}{'D'},\ \textcolor{charliteral}{'E'},\ \textcolor{charliteral}{'F'}}
+\DoxyCodeLine{00226\ \ \ \};}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ BLEService\ elServicio;}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ std::vector<\ Caracteristica*\ >\ lasCaracteristicas;}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00238\ \ \ ServicioEnEmisora(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nombreServicio\_)}
+\DoxyCodeLine{00239\ \ \ :\ elServicio(stringAUint8AlReves(nombreServicio\_,\ \&uuidServicio[0],\ 16))\ \{}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00246\ \ \ \textcolor{keywordtype}{void}\ escribeUUID()\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <=\ 15;\ i++)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ Serial.print((\textcolor{keywordtype}{char})uuidServicio[i]);}
+\DoxyCodeLine{00250\ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\(\backslash\)n**"{}});}
+\DoxyCodeLine{00252\ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00259\ \ \ \textcolor{keywordtype}{void}\ anyadirCaracteristica(Caracteristica\&\ car)\ \{}
+\DoxyCodeLine{00260\ \ \ \ \ (*this).lasCaracteristicas.push\_back(\&car);}
+\DoxyCodeLine{00261\ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00266\ \ \ \textcolor{keywordtype}{void}\ activarServicio()\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ Se\ supone\ que\ todo\ ya\ ha\ sido\ configurado:\ características\ y\ servicio}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ err\_t\ error\ =\ (*this).elServicio.begin();}
+\DoxyCodeLine{00270\ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\ (*this).elServicio.begin();\ error\ =\ "{}});}
+\DoxyCodeLine{00271\ \ \ \ \ Serial.println(error);}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ pCar\ :\ (*this).lasCaracteristicas)\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ (*pCar).activar();}
+\DoxyCodeLine{00275\ \ \ \ \ \}\ \ \textcolor{comment}{//\ for}}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00282\ \ \ \textcolor{keyword}{operator}\ BLEService\&()\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{comment}{//\ "{}conversión\ de\ tipo"{}:\ si\ pongo\ esta\ clase\ en\ un\ sitio\ donde\ necesitan\ un\ BLEService}}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{return}\ elServicio;}
+\DoxyCodeLine{00285\ \ \ \}\ \ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \};\ \ \textcolor{comment}{//\ class}}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00292\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00293\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00294\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+
+\end{DoxyCode}

@@ -1,0 +1,67 @@
+\doxysubsection{LED.\+h}
+\label{a00005_source}\index{LED.h@{LED.h}}
+\textbf{ Ir a la documentación de este archivo.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Nombre\ del\ fichero:\ LED.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Descripción:\ Definición\ de\ la\ clase\ LED\ para\ controlar\ un\ LED.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Autores:\ Carla\ Rumeu\ Montesinos\ y\ Elena\ Ruiz\ de\ la\ Blanca}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Fecha:\ 30\ de\ septiembre\ de\ 2024}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ Este\ archivo\ ha\ sido\ realizado\ por\ Carla\ Rumeu\ Montesinos\ y\ Elena\ Ruiz\ de\ la\ Blanca\ el\ 30\ de\ septiembre\ de\ 2024.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ Contiene\ la\ implementación\ de\ la\ clase\ LED,\ que\ permite\ encender,\ apagar\ y\ hacer\ brillar\ un\ LED.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ Todos\ los\ derechos\ reservados.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ LED\_H\_INCLUIDO}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ LED\_H\_INCLUIDO}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ esperar\ (\textcolor{keywordtype}{long}\ tiempo)\ \{}
+\DoxyCodeLine{00022\ \ \ delay\ (tiempo);}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }LED\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{int}\ numeroLED;\ \ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{bool}\ encendido;\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ LED(\textcolor{keywordtype}{int}\ numero)\ :\ numeroLED(numero),\ encendido(false)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ pinMode(numeroLED,\ OUTPUT);\ }
+\DoxyCodeLine{00044\ \ \ \ \ apagar();\ }
+\DoxyCodeLine{00045\ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{void}\ encender\ ()\ \{}
+\DoxyCodeLine{00051\ \ \ digitalWrite(numeroLED,\ HIGH);\ }
+\DoxyCodeLine{00052\ \ \ encendido\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00053\ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ apagar\ ()\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ digitalWrite(numeroLED,\ LOW);}
+\DoxyCodeLine{00060\ \ \ \ \ encendido\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00061\ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{void}\ alternar\ ()\ \{}
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordflow}{if}\ (encendido)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ apagar();}
+\DoxyCodeLine{00069\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ encender\ ();}
+\DoxyCodeLine{00071\ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \}\ \textcolor{comment}{//\ ()}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{void}\ brillar\ (\textcolor{keywordtype}{long}\ tiempo)\ \{}
+\DoxyCodeLine{00080\ \ \ encender\ ();}
+\DoxyCodeLine{00081\ \ \ esperar(tiempo);\ }
+\DoxyCodeLine{00082\ \ \ apagar\ ();}
+\DoxyCodeLine{00083\ \ \ \}}
+\DoxyCodeLine{00084\ \};\ \textcolor{comment}{//\ class}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00088\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
